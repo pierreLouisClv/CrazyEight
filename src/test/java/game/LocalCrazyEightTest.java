@@ -3,6 +3,7 @@ package game;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.cglib.core.Local;
 
@@ -32,11 +33,6 @@ public class LocalCrazyEightTest {
     @Test
     void aceTestForCardPowerDeterminer(){
         
-        LocalCrazyEight.initialisationPlayers();
-        LocalCrazyEight.getInitialPlayers()[0].handPlayer.clear();
-        LocalCrazyEight.getInitialPlayers()[1].handPlayer.clear();
-        LocalCrazyEight.getInitialPlayers()[2].handPlayer.clear();
-
         Card nineHeart = new Card("NINE", "HEART");
 
         
@@ -75,18 +71,18 @@ public class LocalCrazyEightTest {
 
     }
 
+    @BeforeEach
+    void setUp(){
+
+        LocalCrazyEight.getInitialPlayers()[0] = new Player(LocalCrazyEight.getPlayersNames()[0]);
+        LocalCrazyEight.getInitialPlayers()[1] = new Player(LocalCrazyEight.getPlayersNames()[1]);
+        LocalCrazyEight.getInitialPlayers()[2] = new Player(LocalCrazyEight.getPlayersNames()[2]);
+        LocalCrazyEight.nbOfAcePlayed=0;
+    }
+
     @Test
     void aceCanCounterAnOtherAce(){
-        Player Naki = new Player(LocalCrazyEight.getPlayersNames()[0]);       
-        Player PL = new Player(LocalCrazyEight.getPlayersNames()[1]);
-        Player Malik = new Player(LocalCrazyEight.getPlayersNames()[2]);
-        LocalCrazyEight.getInitialPlayers()[0] = Naki;
-        LocalCrazyEight.getInitialPlayers()[1] = PL;
-        LocalCrazyEight.getInitialPlayers()[2] = Malik;
 
-        Naki.getHandPlayer().clear();
-        PL.getHandPlayer().clear();
-        Malik.getHandPlayer().clear();
 
 
 
