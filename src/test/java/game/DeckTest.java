@@ -5,31 +5,40 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DeckTest {
+
+    
+    
     @Test
     void isHeartSevenExist(){
         Card HeartSeven = new Card("SEVEN", "HEARTS");
         assertTrue(Deck.deckCreation().contains(HeartSeven));
     }
 
+    @BeforeEach
+    void setUp(){
+        Deck.deck.clear();
+    }
+
     @Test
     void cardsAreUnique(){
-        LinkedList<Card> newDeck = Deck.deckCreation();
-        Set<Card> s =new HashSet<Card>(newDeck);
+        Set<Card> s =new HashSet<Card>(Deck.deck);
 
-        assertTrue(s.size()== newDeck.size());
+        assertTrue(s.size()== Deck.deck.size());
     }
 
     @Test
     void deckHas52Cards(){
-        Deck deck1 = new Deck();
-        assertEquals(18, deck1.deck.size());
+        assertEquals(52, Deck.deckCreation().size());
     }
 
     @Test
     void getTopCardAddOneCard(){
+        Deck.deck = Deck.deckCreation();
         LinkedList<Card> hand = new LinkedList<Card>();
         hand.add(Deck.getTopCard());
         
@@ -38,12 +47,13 @@ public class DeckTest {
 
     @Test
     void deckShouldLoseTwoCardsAfterPickingTwoCards(){
-        Deck deck = new Deck();
+        Deck.deck = Deck.deckCreation();
+        
         LinkedList<Card> hand = new LinkedList<Card>();
-        hand.add(deck.getTopCard());
-        hand.add(deck.getTopCard());
+        hand.add(Deck.getTopCard());
+        hand.add(Deck.getTopCard());
 
-        assertEquals(18, deck.deck.size());
+        assertEquals(50, Deck.deck.size());
 
     }
     

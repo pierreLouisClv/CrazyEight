@@ -1,4 +1,48 @@
 -------------------------------------------------------------------------------
 Test set: game.PlayerTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.143 s - in game.PlayerTest
+Tests run: 11, Failures: 0, Errors: 11, Skipped: 0, Time elapsed: 0.098 s <<< FAILURE! - in game.PlayerTest
+game.PlayerTest.getPlayableCardsTest  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.getPlayableCardsTest(PlayerTest.java:24)
+
+game.PlayerTest.itShouldPlayThreeFive  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.itShouldPlayThreeFive(PlayerTest.java:210)
+
+game.PlayerTest.itShouldPlayOnlyOneCard  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.itShouldPlayOnlyOneCard(PlayerTest.java:267)
+
+game.PlayerTest.takeCardAddTheAmountOfCards  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.takeCardAddTheAmountOfCards(PlayerTest.java:15)
+
+game.PlayerTest.itShouldPlayFourFive  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.itShouldPlayFourFive(PlayerTest.java:237)
+
+game.PlayerTest.itShouldPlayFiveDiamondsAndFiveSpades  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.itShouldPlayFiveDiamondsAndFiveSpades(PlayerTest.java:185)
+
+game.PlayerTest.itShouldChooseFiveOfHearts  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.itShouldChooseFiveOfHearts(PlayerTest.java:149)
+
+game.PlayerTest.bestChoiceDoesNotChooseEight  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.bestChoiceDoesNotChooseEight(PlayerTest.java:128)
+
+game.PlayerTest.itShouldPlayTheTwoHeart  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.itShouldPlayTheTwoHeart(PlayerTest.java:158)
+
+game.PlayerTest.bestChoiceShouldBeThree  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.bestChoiceShouldBeThree(PlayerTest.java:97)
+
+game.PlayerTest.hasCombinationTest  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
+	at game.PlayerTest.hasCombinationTest(PlayerTest.java:48)
+
