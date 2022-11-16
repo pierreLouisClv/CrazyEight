@@ -25,7 +25,7 @@ public class DeckTest {
     @Test
     void deckHas52Cards(){
         Deck deck1 = new Deck();
-        assertEquals(49, deck1.deck.size());
+        assertEquals(18, deck1.deck.size());
     }
 
     @Test
@@ -43,7 +43,7 @@ public class DeckTest {
         hand.add(deck.getTopCard());
         hand.add(deck.getTopCard());
 
-        assertEquals(49, deck.deck.size());
+        assertEquals(18, deck.deck.size());
 
     }
     

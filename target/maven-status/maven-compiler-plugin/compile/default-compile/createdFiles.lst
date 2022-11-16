@@ -1,0 +1,5 @@
+game\Player.class
+game\Deck.class
+game\LocalCrazyEight.class
+game\Card.class
+exception\NoMoreCardException.class
