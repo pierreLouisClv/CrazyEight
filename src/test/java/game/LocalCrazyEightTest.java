@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.cglib.core.Local;
 
 
 public class LocalCrazyEightTest {
@@ -73,10 +72,8 @@ public class LocalCrazyEightTest {
 
     @BeforeEach
     void setUp(){
-
-        LocalCrazyEight.getInitialPlayers()[0] = new Player(LocalCrazyEight.getPlayersNames()[0]);
-        LocalCrazyEight.getInitialPlayers()[1] = new Player(LocalCrazyEight.getPlayersNames()[1]);
-        LocalCrazyEight.getInitialPlayers()[2] = new Player(LocalCrazyEight.getPlayersNames()[2]);
+        
+        LocalCrazyEight.initialisationPlayers();
         LocalCrazyEight.nbOfAcePlayed=0;
     }
 

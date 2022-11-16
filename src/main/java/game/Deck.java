@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Deck {
 
-    /*private Deck(){};*/
+    private Deck(){};
 
     protected static LinkedList<Card> deck;
     private static final String [] NAMES = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", "EIGHT", "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
@@ -42,8 +42,8 @@ public class Deck {
     }
 
     protected static void deckReshuffler(){
-        System.out.println("---------------------");
-        System.out.println("The deck is reshuffling...");
+        /*System.out.println("---------------------");
+        System.out.println("The deck is reshuffling...");*/
         Random random = new Random();
         while(!LocalCrazyEight.allCardsPlayed.isEmpty()){
             int index = random.nextInt(LocalCrazyEight.allCardsPlayed.size());

@@ -182,7 +182,6 @@ public class PlayerTest {
     @Test
     void itShouldPlayFiveDiamondsAndFiveSpades(){
         Player p = new Player("Pierre");
-        LocalCrazyEight.allCardsPlayed.clear();
 
         Card FiveHeart = new Card("FIVE", "HEART");
         Card FiveDiamonds = new Card("FIVE", "DIAMONDS");

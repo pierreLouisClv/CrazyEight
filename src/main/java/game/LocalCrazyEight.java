@@ -1,9 +1,10 @@
 package game;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 public class LocalCrazyEight {
+
+    private LocalCrazyEight(){};
 
 
     private static final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik"};
@@ -41,9 +42,9 @@ public class LocalCrazyEight {
         System.out.println(Deck.deck.size());
         int realTurn;
         while(true){
-            System.out.println(turn);
+            /*System.out.println(turn);*/
             realTurn = turn % NUM_OF_PLAYERS;
-            System.out.print("Visible Card: ");
+            /*System.out.print("Visible Card: ");*/
             Card.cardPrinter(visibleCard);
             if(realTurn >= 0){
                 playerTimeToPlay(realTurn);
@@ -59,8 +60,8 @@ public class LocalCrazyEight {
 
             cardPowerDeterminer(visibleCard);
             turn = turn + index;
-            System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
-            System.out.println("---------------------");
+            /*System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
+            System.out.println("---------------------");*/
         }
         //distribution des cartes
         //joueur qui commence
@@ -118,7 +119,7 @@ public class LocalCrazyEight {
         }
     }
     public static void main(String[] args){
-        initialisationPlayers();
+        /*initialisationPlayers();
         System.out.println(Deck.deck.size());
         cardsDistribution();
         System.out.println(Deck.deck.size());
@@ -142,7 +143,7 @@ public class LocalCrazyEight {
             turn = turn + index;
             System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
             System.out.println("---------------------");
-        }
+        }*/
 
     }
     
