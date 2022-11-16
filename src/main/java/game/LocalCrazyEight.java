@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class LocalCrazyEight {
 
-    private LocalCrazyEight(){
+    protected LocalCrazyEight(){
 
     }
 

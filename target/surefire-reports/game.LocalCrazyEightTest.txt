@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: game.LocalCrazyEightTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.155 s <<< FAILURE! - in game.LocalCrazyEightTest
-game.LocalCrazyEightTest.aceTestForCardPowerDeterminer  Time elapsed: 0.063 s  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.217 s <<< FAILURE! - in game.LocalCrazyEightTest
+game.LocalCrazyEightTest.aceTestForCardPowerDeterminer  Time elapsed: 0.06 s  <<< ERROR!
 java.lang.ExceptionInInitializerError
 	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:76)
 Caused by: java.lang.IndexOutOfBoundsException: Index: -1, Size: 0
@@ -12,7 +12,7 @@ game.LocalCrazyEightTest.cardsDistributionAddSevenCardsForEachPlayers  Time elap
 java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
 	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:76)
 
-game.LocalCrazyEightTest.gameContainsFourPlayers  Time elapsed: 0.037 s  <<< ERROR!
+game.LocalCrazyEightTest.gameContainsFourPlayers  Time elapsed: 0.119 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
 	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:76)
 
