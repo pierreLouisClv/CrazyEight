@@ -4,7 +4,9 @@ import java.util.LinkedList;
 
 public class LocalCrazyEight {
 
-    private LocalCrazyEight(){};
+    private LocalCrazyEight(){
+
+    }
 
 
     private static final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik"};

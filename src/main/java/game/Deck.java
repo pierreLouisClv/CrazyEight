@@ -4,7 +4,9 @@ import java.util.Random;
 
 public class Deck {
 
-    private Deck(){};
+    private Deck(){
+
+    }
 
     protected static LinkedList<Card> deck;
     private static final String [] NAMES = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", "EIGHT", "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
