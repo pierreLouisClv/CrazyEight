@@ -13,6 +13,7 @@ public class Player {
 
     protected void playerTourToPlayCard(){
         //Controle visible card 
+        controlVisibleCard(LocalCrazyEight.visibleCard);
         LinkedList<Card> playableCards = getPlayableCards();
         //int = hasCombination(bestChoice) //=3
         if(playableCards.size()==0){
@@ -23,6 +24,27 @@ public class Player {
             //appeler le power -> visible card 
         }
         
+    }
+
+    protected void controlVisibleCard(Card visibleCard){
+        if(Card.getName(visibleCard).equals("ACE")){
+            LinkedList<Card> allAceOfThePlayer = new LinkedList<Card>();
+            for(Card card : handPlayer){
+                if(Card.getName(card).equals("ACE")){
+                    allAceOfThePlayer.add(card);
+                }
+            }
+            if(allAceOfThePlayer.isEmpty()){
+                takeCard(LocalCrazyEight.nbOfAcePlayed*2);
+                LocalCrazyEight.nbOfAcePlayed = 0;
+            }
+            else{
+                int size = allAceOfThePlayer.size();
+                for(int i=0; i<size; i++){
+                    playCard(allAceOfThePlayer);
+                }
+            }
+        }
     }
 
     protected void playCard(LinkedList<Card> playableCards){

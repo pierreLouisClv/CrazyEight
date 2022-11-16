@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Deck {
 
-    private Deck(){
+    protected Deck(){
 
     }
 
