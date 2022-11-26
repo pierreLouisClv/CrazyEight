@@ -22,11 +22,7 @@ public class LocalCrazyEightTest {
         LocalCrazyEight.cardsDistribution();
         assertEquals(7, LocalCrazyEight.getInitialPlayers()[1].handPlayer.size());
         assertEquals(7, LocalCrazyEight.getInitialPlayers()[2].handPlayer.size());
-        assertFalse(LocalCrazyEight.getInitialPlayers()[1].handPlayer.get(0).equals(LocalCrazyEight.getInitialPlayers()[2].handPlayer.get(0)));
-
-      
-
-        
+        assertFalse(LocalCrazyEight.getInitialPlayers()[1].handPlayer.get(0).equals(LocalCrazyEight.getInitialPlayers()[2].handPlayer.get(0)));        
     }
 
     @Test
@@ -77,7 +73,7 @@ public class LocalCrazyEightTest {
         LocalCrazyEight.nbOfAcePlayed=0;
     }
 
-    /*@Test
+    @Test
     void aceCanCounterAnOtherAce(){
 
         Card nineHeart = new Card("NINE", "HEART");
@@ -115,11 +111,11 @@ public class LocalCrazyEightTest {
         LocalCrazyEight.cardPowerDeterminer(LocalCrazyEight.visibleCard);
 
         assertEquals(1, LocalCrazyEight.getInitialPlayers()[0].getHandPlayer().size());
-        /*assertEquals(1, realTurn);
+        /*assertEquals(1, realTurn);*/
         assertEquals(2, LocalCrazyEight.getTurn());
         assertEquals(1, LocalCrazyEight.getInitialPlayers()[1].getHandPlayer().size());
         assertEquals(10, LocalCrazyEight.getInitialPlayers()[2].getHandPlayer().size());
-    }*/
+    }
 
 
 }

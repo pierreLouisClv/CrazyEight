@@ -3,6 +3,8 @@ package game;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import org.springframework.cglib.core.Local;
+
 public class Player {  
     protected String name;
     protected LinkedList<Card> handPlayer = new LinkedList<Card>();
@@ -11,10 +13,48 @@ public class Player {
         this.name = name;
     }
 
+    protected void playerTurnToPlay(){
+        
+        if(LocalCrazyEight.nbOfTurnToPass != 0){ //Si un 7 a été posé le joueur passe son tour
+            LocalCrazyEight.nbOfTurnToPass --;
+        }
+
+
+        else if(isTheCardPowerfull(LocalCrazyEight.visibleCard)){
+        }
+
+        else{
+            LinkedList<Card> playableCards = getPlayableCards(LocalCrazyEight.visibleCard);
+            //int = hasCombination(bestChoice) //=3
+            if(playableCards.size()==0){
+                takeCard(1);
+            }
+            else{
+                playCard(playableCards);
+                //appeler le power -> visible card 
+            }
+            
+        }
+
+        if(LocalCrazyEight.replay){
+            LocalCrazyEight.replay = false;
+        }
+
+        else{
+            LocalCrazyEight.nextPlayer();
+        }
+    }
+
     protected void playerTourToPlayCard(){
         //Controle visible card 
-        controlVisibleCard(LocalCrazyEight.visibleCard);
-        LinkedList<Card> playableCards = getPlayableCards();
+        /*controlVisibleCard(LocalCrazyEight.visibleCard);
+        if(LocalCrazyEight.nbOfTurnToPass != 0){
+            LocalCrazyEight.nbOfTurnToPass --;
+            LocalCrazyEight.nextPlayer();
+        }
+
+        else{*/
+        LinkedList<Card> playableCards = getPlayableCards(LocalCrazyEight.visibleCard);
         //int = hasCombination(bestChoice) //=3
         if(playableCards.size()==0){
             takeCard(1);
@@ -23,11 +63,13 @@ public class Player {
             playCard(playableCards);
             //appeler le power -> visible card 
         }
+        LocalCrazyEight.nextPlayer();
+    
         
     }
 
-    protected void controlVisibleCard(Card visibleCard){
-        if(Card.getName(visibleCard).equals("ACE")){
+    protected boolean isTheCardPowerfull(Card visibleCard){
+        if(Card.getName(visibleCard).equals("ACE") && LocalCrazyEight.nbOfAcePlayed>0){
             LinkedList<Card> allAceOfThePlayer = new LinkedList<Card>();
             for(Card card : handPlayer){
                 if(Card.getName(card).equals("ACE")){
@@ -39,13 +81,30 @@ public class Player {
                 LocalCrazyEight.nbOfAcePlayed = 0;
             }
             else{
-                int size = allAceOfThePlayer.size();
-                for(int i=0; i<size; i++){
-                    playCard(allAceOfThePlayer);
-                }
+                playCard(allAceOfThePlayer);
             }
+
+            return true;
+            
         }
+
+        else if(Card.getName(visibleCard).equals("EIGHT")){
+            Card virtualVisibleCard = new Card("EIGHT", LocalCrazyEight.choosenColor);
+            LinkedList<Card> playableCard = getPlayableCards(virtualVisibleCard);
+            if(playableCard.isEmpty()){
+                takeCard(1);
+            }
+            else{
+                playCard(playableCard);
+            }
+            
+            return true;
+        }
+
+        return false;
     }
+
+
 
     protected void playCard(LinkedList<Card> playableCards){
         int size = playableCards.size();
@@ -61,8 +120,9 @@ public class Player {
             }
         }
             playOnlyOneCard(cardPlayed);
-            if(combination == 1){
-                //return ;
+
+            if((combination == 1) || Card.getName(cardPlayed).equals("EIGHT")){
+                return ;
             }
             else if(combination == 2){
                 
@@ -126,22 +186,46 @@ public class Player {
 
 
     protected void playOnlyOneCard(Card cardPlayed){
-        if(Card.getName(cardPlayed) == "ACE"){
+        /*if(Card.getName(cardPlayed) == "ACE"){
             LocalCrazyEight.nbOfAcePlayed += 1;
-        }
-        LocalCrazyEight.allCardsPlayed.add(cardPlayed);
+        }*/
+        LocalCrazyEight.allCardsPlayed.add(cardPlayed);        
         System.out.println(Card.getName(cardPlayed) + " OF " + Card.getColor(cardPlayed));
         handPlayer.remove(cardPlayed);
+        getPower(cardPlayed);
         //if card = ACE
         //NBOFACE += 1
         LocalCrazyEight.visibleCard = LocalCrazyEight.allCardsPlayed.get(LocalCrazyEight.allCardsPlayed.size()-1);
     }
 
-    protected LinkedList<Card> getPlayableCards(){
+    protected void getPower(Card card){
+        if(Card.getName(card).equals("ACE")){
+            LocalCrazyEight.nbOfAcePlayed++; //itération du nombre d'ace en jeu
+        }
+
+        else if(Card.getName(card).equals("EIGHT")){
+            LocalCrazyEight.choosenColor = determinColorAfterAnEight(); //définit la couleur choisie par le joueur
+        }
+
+        else if(Card.getName(card).equals("TEN")){
+            LocalCrazyEight.replay = true;
+        }
+
+        else if(Card.getName(card).equals("JACK")){
+            LocalCrazyEight.reverse();
+        }
+
+        else if(Card.getName(card).equals("SEVEN")){
+            LocalCrazyEight.nbOfTurnToPass +=1;
+        }
+
+    }
+
+    protected LinkedList<Card> getPlayableCards(Card visibleCard){
         LinkedList<Card> playableCards = new LinkedList<Card>();
         
         for(Card card : handPlayer){
-            if((Card.sameColor(card, LocalCrazyEight.visibleCard))||(Card.sameName(card, LocalCrazyEight.visibleCard))||(Card.getName(card)=="EIGHT")){
+            if((Card.sameColor(card, visibleCard))||(Card.sameName(card, visibleCard))||(Card.getName(card)=="EIGHT")){
                 playableCards.add(card);
             }            
         }
@@ -185,6 +269,34 @@ public class Player {
             }
         }
         return bestChoice;
+    }
+
+    protected String determinColorAfterAnEight(){
+            HashMap<String, Integer> numberOfEachColor = new HashMap<String,Integer>();
+            
+            for(int i=0; i<handPlayer.size() ; i++){
+                if(Card.getName(handPlayer.get(i)) != "EIGHT"){
+                    String currentColor = Card.getColor(handPlayer.get(i));
+                    if(numberOfEachColor.containsKey(currentColor)){
+                        numberOfEachColor.put(currentColor, numberOfEachColor.get(currentColor) + 1);
+                    }
+                    else{
+                        numberOfEachColor.put(currentColor, 1);
+                    }
+                }
+            }
+
+            String colorMostRepresentedInPlayerHand = "End";
+            int maxColors = 0;
+            int countColor = 0;
+            for(String color : numberOfEachColor.keySet()){
+                if((countColor = numberOfEachColor.get(color)) > maxColors){
+                    maxColors = countColor;
+                    colorMostRepresentedInPlayerHand = color;
+                }
+            }
+
+            return colorMostRepresentedInPlayerHand;
     }
 
     protected static int numberOfColors(Player p, String color){

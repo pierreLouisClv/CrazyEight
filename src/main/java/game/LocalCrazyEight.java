@@ -1,6 +1,9 @@
 package game;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+
+import org.springframework.cglib.core.Local;
 
 public class LocalCrazyEight {
 
@@ -15,13 +18,17 @@ public class LocalCrazyEight {
      
     
     protected static LinkedList<Card> allCardsPlayed = new LinkedList<>();    
-    private static int index = 1;
-    private static int turn = 0;
-    protected static int nbOfAcePlayed = 0;
+    private static int index = 1; //jack power
+    protected static int turn = 0; 
+    protected static int nbOfAcePlayed = 0; //ace power
+    protected static int nbOfTurnToPass = 0; //seven power
+    protected static String choosenColor; //eight power
+    protected static boolean replay = false; //ten power
     
     
     static {
-        allCardsPlayed.add(Deck.getTopCard());        
+        allCardsPlayed.add(Deck.getTopCard());
+        choosenColor = Card.getColor(allCardsPlayed.get(0));                
     }
 
     protected static int determinationOfRealTurn(int turn){
@@ -37,7 +44,7 @@ public class LocalCrazyEight {
     
     protected static Card visibleCard = allCardsPlayed.get(allCardsPlayed.size()-1);
 
-    protected static void playGame(){
+    protected static void newPlayGame(){
         initialisationPlayers();
         System.out.println(Deck.deck.size());
         cardsDistribution();
@@ -47,6 +54,34 @@ public class LocalCrazyEight {
             /*System.out.println(turn);*/
             realTurn = turn % NUM_OF_PLAYERS;
             /*System.out.print("Visible Card: ");*/
+            Card.cardPrinter(visibleCard);
+            if(realTurn >= 0){
+                playerTimeToPlayV2(realTurn);
+            }
+            else {
+                realTurn = realTurn + NUM_OF_PLAYERS;
+                playerTimeToPlayV2(realTurn);
+            }
+            if(initialPlayers[realTurn].hasWon()){
+                System.out.println(initialPlayers[realTurn].getName()+" KAZANDI");
+                break;
+                }
+             System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
+            System.out.println("---------------------");
+        }
+        
+    }
+
+    protected static void playGame(){
+        initialisationPlayers();
+        System.out.println(Deck.deck.size());
+        cardsDistribution();
+        System.out.println(Deck.deck.size());
+        int realTurn;
+        while(true){
+            System.out.println(turn);
+            realTurn = turn % NUM_OF_PLAYERS;
+            System.out.print("Visible Card: ");
             Card.cardPrinter(visibleCard);
             if(realTurn >= 0){
                 playerTimeToPlay(realTurn);
@@ -62,8 +97,8 @@ public class LocalCrazyEight {
 
             cardPowerDeterminer(visibleCard);
             turn = turn + index;
-            /*System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
-            System.out.println("---------------------");*/
+            System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
+            System.out.println("---------------------");
         }
         //distribution des cartes
         //joueur qui commence
@@ -82,6 +117,17 @@ public class LocalCrazyEight {
  
     }
 
+    protected static void playerTimeToPlayV2(int realTurn){
+        Player actualPlayer = initialPlayers[realTurn];
+        System.out.println("Next player: " + actualPlayer.getName());
+        actualPlayer.handPrinter();
+        actualPlayer.playerTurnToPlay();
+        System.out.print("Number of " + actualPlayer.getName() + "'s remaining cards: ");
+        System.out.println(actualPlayer.getHandPlayer().size());
+ 
+    }
+    
+    
     protected static void cardPowerDeterminer(Card c){
         if(Card.getName(c).equals("ACE")){// Next player takes 2 cards and not play
             int realTurn = determinationOfRealTurn(turn + index);
@@ -121,6 +167,7 @@ public class LocalCrazyEight {
         }
     }
     public static void main(String[] args){
+        newPlayGame();
         /*initialisationPlayers();
         System.out.println(Deck.deck.size());
         cardsDistribution();
@@ -161,12 +208,24 @@ public class LocalCrazyEight {
         }
     }
 
+    protected static void reverse(){
+        index = index * (-1);
+    }
+
+    protected static void nextPlayer(){
+        LocalCrazyEight.turn += LocalCrazyEight.getIndex();
+    }
+
     protected static Player[] getInitialPlayers(){
         return initialPlayers;
     }
 
     protected static String[] getPlayersNames(){
         return PLAYERS_NAMES;
+    }
+
+    protected static int getIndex(){
+        return index;
     }
 
     protected static int getTurn(){

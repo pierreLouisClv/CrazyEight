@@ -36,8 +36,8 @@ public class PlayerTest {
         hand.add(TwoHeart);
         hand.add(ThreeHeart);
 
-        assertTrue(hand.get(0).equals(p.getPlayableCards().get(0)));
-        assertEquals(hand.size(), p.getPlayableCards().size());
+        assertTrue(hand.get(0).equals(p.getPlayableCards(LocalCrazyEight.visibleCard).get(0)));
+        assertEquals(hand.size(), p.getPlayableCards(LocalCrazyEight.visibleCard).size());
 
     }
 
@@ -148,8 +148,8 @@ public class PlayerTest {
         p.handPlayer.add(TwoHeart);
         LocalCrazyEight.visibleCard = FiveClubs;
 
-        assertTrue(FiveDiamonds.equals(p.getBestChoice(p.getPlayableCards())));
-        assertTrue(FiveHeart.equals(p.finalCardToPlay(p.getBestChoice(p.getPlayableCards()), 3)));
+        assertTrue(FiveDiamonds.equals(p.getBestChoice(p.getPlayableCards(LocalCrazyEight.visibleCard))));
+        assertTrue(FiveHeart.equals(p.finalCardToPlay(p.getBestChoice(p.getPlayableCards(LocalCrazyEight.visibleCard)), 3)));
     }
 
     @Test
@@ -174,7 +174,7 @@ public class PlayerTest {
         p.handPlayer.add(TwoHeart);
 
         LocalCrazyEight.visibleCard = twoClubs;
-        p.playCard(p.getPlayableCards());
+        p.playCard(p.getPlayableCards(LocalCrazyEight.visibleCard));
         assertEquals(TwoHeart, LocalCrazyEight.visibleCard);
         assertEquals(1, LocalCrazyEight.allCardsPlayed.size());
     }
@@ -182,6 +182,7 @@ public class PlayerTest {
     @Test
     void itShouldPlayFiveDiamondsAndFiveSpades(){
         Player p = new Player("Pierre");
+        LocalCrazyEight.allCardsPlayed.clear();
 
         Card FiveHeart = new Card("FIVE", "HEART");
         Card FiveDiamonds = new Card("FIVE", "DIAMONDS");
@@ -198,7 +199,7 @@ public class PlayerTest {
         p.handPlayer.add(TwoHeart);
 
         LocalCrazyEight.visibleCard = FiveHeart;
-        p.playCard(p.getPlayableCards());
+        p.playCard(p.getPlayableCards(LocalCrazyEight.visibleCard));
         assertEquals(FiveSpades, LocalCrazyEight.visibleCard);
         assertEquals(2, LocalCrazyEight.allCardsPlayed.size());
     }
@@ -225,7 +226,7 @@ public class PlayerTest {
         p.handPlayer.add(TwoHeart);
 
         LocalCrazyEight.visibleCard = threeSpades;
-        p.playCard(p.getPlayableCards());
+        p.playCard(p.getPlayableCards(LocalCrazyEight.visibleCard));
         assertEquals(FiveHeart, LocalCrazyEight.visibleCard);
         assertEquals(3, LocalCrazyEight.allCardsPlayed.size());
     }
@@ -255,7 +256,7 @@ public class PlayerTest {
 
 
         LocalCrazyEight.visibleCard = threeSpades;
-        p.playCard(p.getPlayableCards());
+        p.playCard(p.getPlayableCards(LocalCrazyEight.visibleCard));
         assertEquals(FiveHeart, LocalCrazyEight.visibleCard);
         assertEquals(4, LocalCrazyEight.allCardsPlayed.size());
     }
@@ -281,9 +282,61 @@ public class PlayerTest {
         p.handPlayer.add(TwoHeart);
 
         LocalCrazyEight.visibleCard = threeSpades;
-        p.playCard(p.getPlayableCards());
+        p.playCard(p.getPlayableCards(LocalCrazyEight.visibleCard));
         assertEquals(FiveSpades, LocalCrazyEight.visibleCard);
         assertEquals(1, LocalCrazyEight.allCardsPlayed.size());
 
     }
+
+    @Test
+    void eightDeterminTheOptimalColor(){
+        Player p = new Player("Pierre");
+        LocalCrazyEight.allCardsPlayed.clear();
+
+        Card FiveHeart = new Card("FIVE", "HEART");
+        Card FiveDiamonds = new Card("FIVE", "DIAMONDS");
+        Card FiveSpades = new Card("FIVE", "SPADES");
+        Card FourClubs = new Card("FOUR", "HEART");
+        Card FourSpades = new Card("FOUR", "CLUBS");
+        Card TwoHeart = new Card("TWO", "HEART");
+        Card threeSpades = new Card("THREE", "SPADES");
+        Card fiveClubs = new Card("FIVE", "CLUBS");
+        Card eightClubs = new Card("EIGHT", "CLUBS");
+
+        p.handPlayer.clear();
+        p.handPlayer.add(FourClubs);
+        p.handPlayer.add(FiveSpades);
+        p.handPlayer.add(FourSpades);
+        p.handPlayer.add(TwoHeart);
+        p.handPlayer.add(FiveHeart);
+        p.handPlayer.add(FiveDiamonds);
+        p.handPlayer.add(threeSpades);
+
+        p.getPower(eightClubs);
+
+
+        assertEquals("HEART", LocalCrazyEight.choosenColor);
+
+    }
+
+    @Test
+    void eightScenarioWithOneCardForEachColor(){
+        Player p = new Player("Pierre");
+        LocalCrazyEight.allCardsPlayed.clear();
+
+        Card FiveHeart = new Card("FIVE", "HEART");
+        Card FiveDiamonds = new Card("FIVE", "DIAMONDS");
+        Card FiveSpades = new Card("FIVE", "SPADES");
+        Card eightClubs = new Card("EIGHT", "CLUBS");
+
+        p.handPlayer.clear();
+        p.handPlayer.add(FiveHeart);
+        p.handPlayer.add(FiveSpades);
+        p.handPlayer.add(FiveDiamonds);
+
+        p.getPower(eightClubs);
+
+
+        assertEquals("HEART", LocalCrazyEight.choosenColor);
+}
 }
