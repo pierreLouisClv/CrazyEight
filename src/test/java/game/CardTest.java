@@ -12,21 +12,21 @@ public class CardTest {
 
     @Test
     void aceOfDiamondsShouldBeDiamonds() {
-        Card AceOfDiamonds = new Card("ACE", "DIAMONDS");
-        assertTrue(Card.getColor(AceOfDiamonds)=="DIAMONDS");
+        Card aceOfDiamonds = new Card("ACE", "DIAMONDS");
+        assertTrue(aceOfDiamonds.getColor()=="DIAMONDS");
     }
 
     @Test
     void twoHeartAndFourHeartHaveSameColors(){
         Card twoHeart = new Card("TWO", "HEARTS");
         Card fourHeart = new Card("FOUR", "HEARTS");
-        assertTrue(Card.sameColor(twoHeart, fourHeart));
+        assertTrue(twoHeart.haveSameColor(fourHeart));
     }
 
     @Test
     void twoHeartAndTwoClubsHaveSameNames(){
         Card twoHeart = new Card("TWO", "HEARTS");
         Card twoClubs = new Card("TWO", "CLUBS");
-        assertTrue(Card.sameName(twoHeart, twoClubs));
+        assertTrue(twoHeart.haveSameValue(twoClubs));
     }
 }

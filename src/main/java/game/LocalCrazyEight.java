@@ -1,234 +1,314 @@
 package game;
 
-import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Random;
 
-import org.springframework.cglib.core.Local;
 
 public class LocalCrazyEight {
 
-    protected LocalCrazyEight(){
-
-    }
-
-
-    private static final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik"};
-    private static final int NUM_OF_PLAYERS = PLAYERS_NAMES.length;
-    private static Player[] initialPlayers = new Player[NUM_OF_PLAYERS];
+    private final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik", "Ken", "Yessi"};
+    private final int NB_OF_PLAYERS = PLAYERS_NAMES.length;
+    private Player[] initialPlayers = new Player[NB_OF_PLAYERS];
+    private final int NUMBER_OF_CARDS_FOR_EACH_PLAYERS = 7;
      
     
-    protected static LinkedList<Card> allCardsPlayed = new LinkedList<>();    
-    private static int index = 1; //jack power
-    protected static int turn = 0; 
-    protected static int nbOfAcePlayed = 0; //ace power
-    protected static int nbOfTurnToPass = 0; //seven power
-    protected static String choosenColor; //eight power
-    protected static boolean replay = false; //ten power
+    private LinkedList<Card> allCardsPlayed = new LinkedList<>(); 
+    private Card lastCardPlayed;
     
-    
-    static {
+    private int turn; 
+    private int index; //jack power
+    private int nbOfAcePlayed; //ace power
+    private int nbOfTurnToPass; //seven power
+    private String choosenColor; //eight power
+    private boolean replay; //ten power
+
+    protected LocalCrazyEight(){
         allCardsPlayed.add(Deck.getTopCard());
-        choosenColor = Card.getColor(allCardsPlayed.get(0));                
-    }
+        lastCardPlayed = allCardsPlayed.getLast();
 
-    protected static int determinationOfRealTurn(int turn){
-        if(turn % NUM_OF_PLAYERS >= 0){
-            return turn % NUM_OF_PLAYERS;
-        }
-        else{
-            return turn % NUM_OF_PLAYERS + NUM_OF_PLAYERS;
-        }
-
+        choosenColor = allCardsPlayed.getLast().getColor();
+        index = 1;
+        nbOfAcePlayed = 0;
+        nbOfTurnToPass = 0;
+        replay = false;
     }
 
     
-    protected static Card visibleCard = allCardsPlayed.get(allCardsPlayed.size()-1);
-
-    protected static void newPlayGame(){
+    protected void playGameWithAllActions(){
         initialisationPlayers();
         System.out.println(Deck.deck.size());
         cardsDistribution();
         System.out.println(Deck.deck.size());
         int realTurn;
         while(true){
-            /*System.out.println(turn);*/
-            realTurn = turn % NUM_OF_PLAYERS;
+            
+            
             /*System.out.print("Visible Card: ");*/
-            Card.cardPrinter(visibleCard);
-            if(realTurn >= 0){
-                playerTimeToPlayV2(realTurn);
-            }
-            else {
-                realTurn = realTurn + NUM_OF_PLAYERS;
-                playerTimeToPlayV2(realTurn);
-            }
+            Card.cardPrinter(lastCardPlayed);
+            realTurn = determinationOfRealTurn(turn);
+            playerTimeToPlay(realTurn);
+            
             if(initialPlayers[realTurn].hasWon()){
                 System.out.println(initialPlayers[realTurn].getName()+" KAZANDI");
                 break;
-                }
+            }
              System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
             System.out.println("---------------------");
+        }        
+    }
+
+    protected String playGameQuickly(){
+        initialisationPlayers();
+        cardsDistribution();
+        while(true){
+            if(this.getPlayerTurn().hasWon()){
+                return this.getPlayerTurn().getName() ;
+            }
+            playerPlayOrPass();            
+        }
+    }
+
+    protected void playerPlayOrPass(){
+        Player playerTurn = this.getPlayerTurn();
+        
+        if(this.nbOfTurnToPass != 0){ //Si un 7 a été posé le joueur passe son tour
+            this.nbOfTurnToPass --;
+        }
+
+        else if(isTheCardPowerfull(this.lastCardPlayed)){
+        }
+
+        else{
+            LinkedList<Card> playableCards = playerTurn.getPlayableCards(this.lastCardPlayed);
+            if(playableCards.isEmpty()){
+                takeCard(1);
+            }
+            else{
+                playCard(playableCards);
+                //appeler le power -> visible card 
+            }            
+        }        
+        if(this.replay){
+            this.replay = false;
+        }
+        else{
+            this.nextPlayer();
+        }
+    }
+
+    protected void playerTimeToPlay(int realTurn){
+        Player playerTurn = initialPlayers[realTurn];
+        System.out.println("Next player: " + playerTurn.getName());
+        playerTurn.handPrinter();
+        playerPlayOrPass();
+        System.out.print("Number of " + playerTurn.getName() + "'s remaining cards: ");
+        System.out.println(playerTurn.getHandPlayer().size());
+ 
+    }
+
+    protected boolean isTheCardPowerfull(Card lastCardPlayed){
+        Player playerTurn = this.getPlayerTurn();
+
+        if(lastCardPlayed.getValue().equals("ACE") && this.nbOfAcePlayed>0){
+            LinkedList<Card> allAceOfThePlayer = new LinkedList<Card>();
+            for(Card card : playerTurn.getHandPlayer()){
+                if(card.getValue().equals("ACE")){
+                    allAceOfThePlayer.add(card);
+                }
+            }
+            if(allAceOfThePlayer.isEmpty()){
+                takeCard(this.nbOfAcePlayed*2);
+                this.nbOfAcePlayed = 0;
+            }
+            else{
+                playCard(allAceOfThePlayer);
+            }
+
+            return true;
+            
+        }
+
+        else if(lastCardPlayed.getValue().equals("EIGHT")){
+            Card virtualNewEight = new Card("EIGHT", this.choosenColor);
+            LinkedList<Card> playableCard = playerTurn.getPlayableCards(virtualNewEight);
+            if(playableCard.isEmpty()){
+                takeCard(1);
+            }
+            else{
+                playCard(playableCard);
+            }
+            
+            return true;
+        }
+
+        return false;
+    }
+
+    protected void getCardPower(Card card){
+        switch(card.getValue()){
+            case "ACE" :
+                this.nbOfAcePlayed++; //itération du nombre d'ace en jeu
+                break;
+        
+            case "EIGHT" :
+                this.choosenColor = this.getPlayerTurn().determinColorAfterAnEight(); //définit la couleur choisie par le joueur
+                break;
+
+            case "TEN" :
+                this.replay = true;
+                break;
+
+            case "JACK" :
+                this.reverse();
+                break;
+
+            case "SEVEN" :
+                this.nbOfTurnToPass +=1;
+                break;
+
+            default :
+                break;
+        }
+    }
+
+    public void takeCard(int nbOfCardsPlayerMustToTake){
+        Player playerTurn = this.getPlayerTurn();
+        Card card;
+
+        for(int i=0; i < nbOfCardsPlayerMustToTake; i++){
+            if((card = Deck.getTopCard()) == null){
+                deckReshuffler();
+            }
+            else{
+                playerTurn.getHandPlayer().add(card);
+            }
+        }
+    } 
+    
+    protected void playCard(LinkedList<Card> playableCards){
+        Player playerTurn = this.getPlayerTurn();
+
+        int size = playableCards.size();
+        Card cardPlayed = playableCards.get(0);
+        int combination = playerTurn.hasCombination(cardPlayed);
+        if(size > 1){
+            cardPlayed = playerTurn.makeTheBestChoice(playableCards, this.lastCardPlayed);
+        }
+        else{
+            if(combination == 1){
+                playOnlyOneCard(cardPlayed);
+                return ;
+            }
+        }
+            playOnlyOneCard(cardPlayed);
+            
+            if((combination == 1) || cardPlayed.getValue().equals("EIGHT")){
+                return ;
+            }
+            else if(combination == 2){
+                
+                Card theSecondCardToPlay = playableCards.get(0);
+                for(Card card : playerTurn.getHandPlayer()){
+                    if(card.haveSameValue(cardPlayed) && !(card.haveSameColor(cardPlayed))){
+                        theSecondCardToPlay = card;
+                        break;
+                    }
+                }                
+                playOnlyOneCard(theSecondCardToPlay);
+            }
+            else {                
+                Card finalCardToPlay = playerTurn.finalCardToPlay(cardPlayed, combination);
+                LinkedList<Card> otherCardsPlayed = new LinkedList<Card>();            
+                for(Card card : playerTurn.getHandPlayer()){
+                    if(card.haveSameValue(finalCardToPlay) && !(card.haveSameColor(finalCardToPlay))){
+                        otherCardsPlayed.add(card); //secondCard = card
+                        if(combination==3){
+                            break;
+                        }
+                    }
+                }
+                for(Card card : otherCardsPlayed){
+                    playOnlyOneCard(card);
+                }
+                playOnlyOneCard(finalCardToPlay);
+            }
+            
         }
         
-    }
-
-    protected static void playGame(){
-        initialisationPlayers();
-        System.out.println(Deck.deck.size());
-        cardsDistribution();
-        System.out.println(Deck.deck.size());
-        int realTurn;
-        while(true){
-            System.out.println(turn);
-            realTurn = turn % NUM_OF_PLAYERS;
-            System.out.print("Visible Card: ");
-            Card.cardPrinter(visibleCard);
-            if(realTurn >= 0){
-                playerTimeToPlay(realTurn);
-            }
-            else {
-                realTurn = realTurn + NUM_OF_PLAYERS;
-                playerTimeToPlay(realTurn);
-            }
-            if(initialPlayers[realTurn].hasWon()){
-                System.out.println(initialPlayers[realTurn].getName()+" KAZANDI");
-                break;
-                }
-
-            cardPowerDeterminer(visibleCard);
-            turn = turn + index;
-            System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
-            System.out.println("---------------------");
-        }
-        //distribution des cartes
-        //joueur qui commence
-        //chacun joue
-        //si player has no card -> he win
-
-    }
-
-    protected static void playerTimeToPlay(int realTurn){
-        Player actualPlayer = initialPlayers[realTurn];
-        System.out.println("Next player: " + actualPlayer.getName());
-        actualPlayer.handPrinter();
-        actualPlayer.playerTourToPlayCard();
-        System.out.print("Number of " + actualPlayer.getName() + "'s remaining cards: ");
-        System.out.println(actualPlayer.getHandPlayer().size());
- 
-    }
-
-    protected static void playerTimeToPlayV2(int realTurn){
-        Player actualPlayer = initialPlayers[realTurn];
-        System.out.println("Next player: " + actualPlayer.getName());
-        actualPlayer.handPrinter();
-        actualPlayer.playerTurnToPlay();
-        System.out.print("Number of " + actualPlayer.getName() + "'s remaining cards: ");
-        System.out.println(actualPlayer.getHandPlayer().size());
- 
+        protected void playOnlyOneCard(Card cardPlayed){
+            Player playerTurn = this.getPlayerTurn();
+        this.allCardsPlayed.add(cardPlayed);        
+        System.out.println(cardPlayed.getValue() + " OF " + cardPlayed.getColor());
+        playerTurn.getHandPlayer().remove(cardPlayed);
+        getCardPower(cardPlayed);
+        this.lastCardPlayed = this.allCardsPlayed.get(this.allCardsPlayed.size()-1);
     }
     
-    
-    protected static void cardPowerDeterminer(Card c){
-        if(Card.getName(c).equals("ACE")){// Next player takes 2 cards and not play
-            int realTurn = determinationOfRealTurn(turn + index);
-            int hasAce = 0;
-            for(Card card : initialPlayers[realTurn].getHandPlayer()){
-                if(Card.getName(card)=="ACE"){
-                    initialPlayers[realTurn].playOnlyOneCard(card);
-                    hasAce = index;
-                }
-            }
+    private int determinationOfRealTurn(int turn){
+        if(turn % NB_OF_PLAYERS >= 0){
+            return turn % NB_OF_PLAYERS;
+        }
+        else{
+            return turn % NB_OF_PLAYERS + NB_OF_PLAYERS;
+        }
 
-            realTurn = determinationOfRealTurn(realTurn + hasAce);
-            
-            initialPlayers[realTurn].takeCard(nbOfAcePlayed * 2);
-            nbOfAcePlayed = 0;
-
-            turn = turn + hasAce + index;
-        }
-        if(Card.getName(c).equals("SEVEN")){// Make next player not to play
-            turn = turn + index;
-        }
-        if(Card.getName(c).equals("EIGHT")){//Choose of color for the next player to play
-            
-        }
-        if(Card.getName(c).equals("TEN")){// Player replays
-            turn = turn - index;
-        }
-        if(Card.getName(c).equals("JACK")){// Change of game direktion
-            index = -index;
-        }
     }
     
-    
-    protected static void cardsDistribution(){
+    protected void cardsDistribution(){
         for(Player p : initialPlayers){
-            p.takeCard(7);
+            for(int i=0; i<NUMBER_OF_CARDS_FOR_EACH_PLAYERS; i++){
+                p.getHandPlayer().add(Deck.getTopCard());
+            }
         }
     }
     public static void main(String[] args){
-        newPlayGame();
-        /*initialisationPlayers();
-        System.out.println(Deck.deck.size());
-        cardsDistribution();
-        System.out.println(Deck.deck.size());
-        int realTurn;
-        while(true){
-            System.out.println(turn);
-            System.out.print("Visible Card: ");
-            Card.cardPrinter(visibleCard);
-            realTurn = determinationOfRealTurn(turn);
-                System.out.println("Next player: "+initialPlayers[realTurn].getName());
-                initialPlayers[realTurn].handPrinter();
-                initialPlayers[realTurn].playerTourToPlayCard();
-                System.out.print("Number of "+initialPlayers[realTurn].getName()+"'s remaining cards: ");
-                System.out.println(initialPlayers[realTurn].getHandPlayer().size());
-                if(initialPlayers[realTurn].getHandPlayer().size() == 0){
-                    System.out.println(initialPlayers[realTurn].getName()+" KAZANDI");
-                    break;
-                }
-            
-            cardPowerDeterminer(visibleCard);
-            turn = turn + index;
-            System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
-            System.out.println("---------------------");
-        }*/
+        LocalCrazyEight game = new LocalCrazyEight();
+        game.playGameWithAllActions();
+
 
     }
     
-
-
-
-
-
-    protected static void initialisationPlayers(){
-        for(int i=0; i<NUM_OF_PLAYERS; i++){
+    protected void initialisationPlayers(){
+        for(int i=0; i<NB_OF_PLAYERS; i++){
             Player p = new Player(PLAYERS_NAMES[i]);
             initialPlayers[i] = p;
         }
     }
 
-    protected static void reverse(){
+    protected void deckReshuffler(){
+        Random random = new Random();
+        while(!this.allCardsPlayed.isEmpty()){
+            int randomNumber = random.nextInt(this.allCardsPlayed.size());
+            Deck.deck.add(this.allCardsPlayed.get(randomNumber));
+            this.allCardsPlayed.remove(randomNumber);
+        } 
+    }
+
+    protected Player getPlayerTurn(){
+        return this.initialPlayers[determinationOfRealTurn(turn)];
+    }
+
+    protected void reverse(){
         index = index * (-1);
     }
 
-    protected static void nextPlayer(){
-        LocalCrazyEight.turn += LocalCrazyEight.getIndex();
+    protected void nextPlayer(){
+        turn += getIndex();
     }
 
-    protected static Player[] getInitialPlayers(){
+    protected Player[] getInitialPlayers(){
         return initialPlayers;
     }
 
-    protected static String[] getPlayersNames(){
+    protected String[] getPlayersNames(){
         return PLAYERS_NAMES;
     }
 
-    protected static int getIndex(){
+    protected int getIndex(){
         return index;
     }
 
-    protected static int getTurn(){
+    protected int getTurn(){
         return turn;
     }
 }

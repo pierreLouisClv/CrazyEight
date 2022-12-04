@@ -34,24 +34,8 @@ public class Deck {
     }
 
     protected static Card getTopCard(){
-        if(deck.isEmpty()){
-            deckReshuffler();
-        }
-        Card topCard = deck.get(deck.size()-1);
-        deck.remove(deck.size()-1);
-
-        return topCard;
+        return deck.pollLast();
     }
 
-    protected static void deckReshuffler(){
-        /*System.out.println("---------------------");
-        System.out.println("The deck is reshuffling...");*/
-        Random random = new Random();
-        while(!LocalCrazyEight.allCardsPlayed.isEmpty()){
-            int index = random.nextInt(LocalCrazyEight.allCardsPlayed.size());
-            Deck.deck.add(LocalCrazyEight.allCardsPlayed.get(index));
-            LocalCrazyEight.allCardsPlayed.remove(index);
-        } 
-    }
    
 }

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class PlayerTest {
-    
+    /*
     @Test
     void takeCardAddTheAmountOfCards(){
         Player p = new Player("Naki");
@@ -339,4 +339,6 @@ public class PlayerTest {
 
         assertEquals("HEART", LocalCrazyEight.choosenColor);
 }
+
+*/
 }

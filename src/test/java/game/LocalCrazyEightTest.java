@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class LocalCrazyEightTest {
+     /*
     @Test
     void gameContainsFourPlayers() {
         LocalCrazyEight.initialisationPlayers();
@@ -58,7 +59,7 @@ public class LocalCrazyEightTest {
         LocalCrazyEight.cardPowerDeterminer(LocalCrazyEight.visibleCard);
 
         assertEquals(1, LocalCrazyEight.getInitialPlayers()[0].getHandPlayer().size());
-        /*assertEquals(1, realTurn);*/
+        
         assertEquals(1, LocalCrazyEight.getTurn());
         assertEquals(6, LocalCrazyEight.getInitialPlayers()[1].getHandPlayer().size());
 
@@ -111,11 +112,11 @@ public class LocalCrazyEightTest {
         LocalCrazyEight.cardPowerDeterminer(LocalCrazyEight.visibleCard);
 
         assertEquals(1, LocalCrazyEight.getInitialPlayers()[0].getHandPlayer().size());
-        /*assertEquals(1, realTurn);*/
+
         assertEquals(2, LocalCrazyEight.getTurn());
         assertEquals(1, LocalCrazyEight.getInitialPlayers()[1].getHandPlayer().size());
         assertEquals(10, LocalCrazyEight.getInitialPlayers()[2].getHandPlayer().size());
-    }
+    }*/
 
 
 }
