@@ -7,14 +7,14 @@ import java.util.Random;
 
 public class LocalCrazyEight {
 
-    private final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik", "Ken", "Yessi"};
+    private final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik", "Ken"};
     private final int NB_OF_PLAYERS = PLAYERS_NAMES.length;
     private Player[] initialPlayers = new Player[NB_OF_PLAYERS];
     private final int NUMBER_OF_CARDS_FOR_EACH_PLAYERS = 7;
      
     
     private Deque<Card> allCardsPlayed = new LinkedList<Card>(); 
-    private Card lastCardPlayed;
+    protected Card lastCardPlayed;
     
     private int turn; 
     private int index; //jack power
@@ -86,7 +86,6 @@ public class LocalCrazyEight {
             }
             else{
                 playSeveralCardsOrOnlyOneCard(playableCards);
-                //appeler le power -> visible card 
             }            
         }        
         if(this.replay){
@@ -322,5 +321,13 @@ public class LocalCrazyEight {
 
     protected int getTurn(){
         return turn;
+    }
+
+    protected String getChoosenColor(){
+        return this.choosenColor;
+    }
+
+    protected int getNbOfPlayers(){
+        return NB_OF_PLAYERS;
     }
 }

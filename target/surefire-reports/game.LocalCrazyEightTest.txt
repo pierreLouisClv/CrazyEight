@@ -1,18 +1,48 @@
 -------------------------------------------------------------------------------
 Test set: game.LocalCrazyEightTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.183 s <<< FAILURE! - in game.LocalCrazyEightTest
-game.LocalCrazyEightTest.aceTestForCardPowerDeterminer  Time elapsed: 0.021 s  <<< ERROR!
-java.lang.ExceptionInInitializerError
-	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:76)
-Caused by: java.lang.IndexOutOfBoundsException: Index: -1, Size: 0
-	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:76)
+Tests run: 11, Failures: 0, Errors: 11, Skipped: 0, Time elapsed: 0.108 s <<< FAILURE! - in game.LocalCrazyEightTest
+game.LocalCrazyEightTest.itShouldPlayThreeFive  Time elapsed: 0.009 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
 
-game.LocalCrazyEightTest.cardsDistributionAddSevenCardsForEachPlayers  Time elapsed: 0.006 s  <<< ERROR!
-java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
-	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:76)
+game.LocalCrazyEightTest.eightDeterminTheOptimalColor  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
 
-game.LocalCrazyEightTest.gameContainsFourPlayers  Time elapsed: 0.002 s  <<< ERROR!
-java.lang.NoClassDefFoundError: Could not initialize class game.LocalCrazyEight
-	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:76)
+game.LocalCrazyEightTest.itShouldPlayOnlyOneCard  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.takeCardAddTheAmountOfCards  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.itShouldPlayFourFive  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.eightScenarioWithOneCardForEachColor  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.cardsDistributionAddSevenCardsForEachPlayers  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.itShouldPlayFiveDiamondsAndFiveSpades  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.gameContainsTheTrueAmountOfPlayers  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.itShouldPlayTheTwoHeart  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
+
+game.LocalCrazyEightTest.gameReshufflerResetAllCardsPlayed  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "game.Card.getColor()" because the return value of "java.util.Deque.getLast()" is null
+	at game.LocalCrazyEightTest.setUp(LocalCrazyEightTest.java:16)
 
