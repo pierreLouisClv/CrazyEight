@@ -1,6 +1,7 @@
 package game;
 
 import java.util.LinkedList;
+import java.util.Deque;
 import java.util.Random;
 
 
@@ -12,7 +13,7 @@ public class LocalCrazyEight {
     private final int NUMBER_OF_CARDS_FOR_EACH_PLAYERS = 7;
      
     
-    private LinkedList<Card> allCardsPlayed = new LinkedList<>(); 
+    private Deque<Card> allCardsPlayed = new LinkedList<Card>(); 
     private Card lastCardPlayed;
     
     private int turn; 
@@ -84,7 +85,7 @@ public class LocalCrazyEight {
                 takeCard(1);
             }
             else{
-                playCard(playableCards);
+                playSeveralCardsOrOnlyOneCard(playableCards);
                 //appeler le power -> visible card 
             }            
         }        
@@ -121,7 +122,7 @@ public class LocalCrazyEight {
                 this.nbOfAcePlayed = 0;
             }
             else{
-                playCard(allAceOfThePlayer);
+                playSeveralCardsOrOnlyOneCard(allAceOfThePlayer);
             }
 
             return true;
@@ -135,7 +136,7 @@ public class LocalCrazyEight {
                 takeCard(1);
             }
             else{
-                playCard(playableCard);
+                playSeveralCardsOrOnlyOneCard(playableCard);
             }
             
             return true;
@@ -185,40 +186,48 @@ public class LocalCrazyEight {
         }
     } 
     
-    protected void playCard(LinkedList<Card> playableCards){
+    protected void playSeveralCardsOrOnlyOneCard(LinkedList<Card> playableCards){
         Player playerTurn = this.getPlayerTurn();
 
         int size = playableCards.size();
         Card cardPlayed = playableCards.get(0);
-        int combination = playerTurn.hasCombination(cardPlayed);
+        int combination = playerTurn.nbOfCombinationOfTheCard(cardPlayed);
         if(size > 1){
             cardPlayed = playerTurn.makeTheBestChoice(playableCards, this.lastCardPlayed);
         }
         else{
             if(combination == 1){
-                playOnlyOneCard(cardPlayed);
+                oneCardIsPlayed(cardPlayed);
                 return ;
             }
-        }
-            playOnlyOneCard(cardPlayed);
-            
+        }            
             if((combination == 1) || cardPlayed.getValue().equals("EIGHT")){
-                return ;
+                oneCardIsPlayed(cardPlayed);
             }
-            else if(combination == 2){
-                
-                Card theSecondCardToPlay = playableCards.get(0);
+            else if(combination == 2){                
+                playTwoCards(playerTurn, cardPlayed, playableCards);
+            }
+            else{                
+                playThreeOrFourCards(playerTurn, cardPlayed, combination);
+            }
+            
+        }
+        
+        protected void playTwoCards(Player playerTurn, Card cardPlayed, LinkedList<Card> playableCards){
+            oneCardIsPlayed(cardPlayed);
+            Card theSecondCardToPlay = playableCards.get(0);
                 for(Card card : playerTurn.getHandPlayer()){
                     if(card.haveSameValue(cardPlayed) && !(card.haveSameColor(cardPlayed))){
                         theSecondCardToPlay = card;
                         break;
                     }
                 }                
-                playOnlyOneCard(theSecondCardToPlay);
-            }
-            else {                
-                Card finalCardToPlay = playerTurn.finalCardToPlay(cardPlayed, combination);
-                LinkedList<Card> otherCardsPlayed = new LinkedList<Card>();            
+                oneCardIsPlayed(theSecondCardToPlay);
+        }
+
+        protected void playThreeOrFourCards(Player playerTurn, Card cardPlayed, int combination){
+            Card finalCardToPlay = playerTurn.cardPlayedAtTheEndOfTheCombination(cardPlayed, combination);
+                LinkedList<Card> otherCardsPlayed = new LinkedList<>();            
                 for(Card card : playerTurn.getHandPlayer()){
                     if(card.haveSameValue(finalCardToPlay) && !(card.haveSameColor(finalCardToPlay))){
                         otherCardsPlayed.add(card); //secondCard = card
@@ -228,20 +237,18 @@ public class LocalCrazyEight {
                     }
                 }
                 for(Card card : otherCardsPlayed){
-                    playOnlyOneCard(card);
+                    oneCardIsPlayed(card);
                 }
-                playOnlyOneCard(finalCardToPlay);
-            }
-            
+                oneCardIsPlayed(finalCardToPlay);
         }
-        
-        protected void playOnlyOneCard(Card cardPlayed){
+
+        protected void oneCardIsPlayed(Card cardPlayed){
             Player playerTurn = this.getPlayerTurn();
         this.allCardsPlayed.add(cardPlayed);        
         System.out.println(cardPlayed.getValue() + " OF " + cardPlayed.getColor());
         playerTurn.getHandPlayer().remove(cardPlayed);
         getCardPower(cardPlayed);
-        this.lastCardPlayed = this.allCardsPlayed.get(this.allCardsPlayed.size()-1);
+        this.lastCardPlayed = this.allCardsPlayed.getLast();
     }
     
     private int determinationOfRealTurn(int turn){
@@ -277,10 +284,11 @@ public class LocalCrazyEight {
 
     protected void deckReshuffler(){
         Random random = new Random();
-        while(!this.allCardsPlayed.isEmpty()){
-            int randomNumber = random.nextInt(this.allCardsPlayed.size());
-            Deck.deck.add(this.allCardsPlayed.get(randomNumber));
-            this.allCardsPlayed.remove(randomNumber);
+        LinkedList<Card> cards = (LinkedList<Card>)allCardsPlayed;
+        while(!cards.isEmpty()){
+            int randomNumber = random.nextInt(cards.size());
+            Deck.deck.add(cards.get(randomNumber));
+            cards.remove(randomNumber);
         } 
     }
 
@@ -294,6 +302,10 @@ public class LocalCrazyEight {
 
     protected void nextPlayer(){
         turn += getIndex();
+    }
+
+    protected Deque<Card> getAllCardsPlayed(){
+        return allCardsPlayed;
     }
 
     protected Player[] getInitialPlayers(){

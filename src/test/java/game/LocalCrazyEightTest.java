@@ -2,18 +2,33 @@ package game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 public class LocalCrazyEightTest {
-     /*
-    @Test
-    void gameContainsFourPlayers() {
-        LocalCrazyEight.initialisationPlayers();
 
-        assertEquals(3, LocalCrazyEight.getInitialPlayers().length);
+    @Test
+    void gameReshufflerResetAllCardsPlayed(){
+        LocalCrazyEight game = new LocalCrazyEight();
+        for(int i=0; i<51; i++){
+            game.getAllCardsPlayed().add(Deck.getTopCard());
+        }
+        game.deckReshuffler();
+        assertEquals(0, game.getAllCardsPlayed().size());
+        assertEquals(52, Deck.deck.size());
+    }
+     
+    
+   /* @Test
+    void gameContainsFourPlayers() {
+        LocalCrazyEight game = new LocalCrazyEight();
+
+        game.initialisationPlayers();
+
+        assertEquals(3, game.getInitialPlayers().length);
 
     }
 
@@ -69,9 +84,10 @@ public class LocalCrazyEightTest {
 
     @BeforeEach
     void setUp(){
-        
-        LocalCrazyEight.initialisationPlayers();
-        LocalCrazyEight.nbOfAcePlayed=0;
+
+        LocalCrazyEight game = new LocalCrazyEight();
+        game.initialisationPlayers();
+        game.nbOfAcePlayed=0;
     }
 
     @Test

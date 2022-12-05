@@ -12,7 +12,7 @@ public class Player {
     }
 
     
-    protected int numberOfColors(String color){
+    protected int numberOfColorsInPlayerHand(String color){
         int number = 0;
         for(Card card: handPlayer){
             if(card.getColor().equals(color)){
@@ -22,19 +22,19 @@ public class Player {
         return number;
     }
     
-    protected Card finalCardToPlay(Card bestChoice, int combination){
-        HashMap<Card, Integer> numberOfEachColor = new HashMap<Card,Integer>(combination - 1);
+    protected Card cardPlayedAtTheEndOfTheCombination(Card bestChoice, int combination){
+        HashMap<Card, Integer> nbOfEachColorsInHandPlayer = new HashMap<>(combination - 1);
         for(Card card : handPlayer){
             if((card.haveSameValue(bestChoice)) && !(card.haveSameColor(bestChoice))){
-                numberOfEachColor.put(card, numberOfColors(card.getColor()));
+                nbOfEachColorsInHandPlayer.put(card, numberOfColorsInPlayerHand(card.getColor()));
             }
         }
         Card finalCardPlayed = bestChoice;
         int maxColor = 0;
-        for(Card card1 : numberOfEachColor.keySet()){
-            if(numberOfEachColor.get(card1) > maxColor){
+        for(Card card1 : nbOfEachColorsInHandPlayer.keySet()){
+            if(nbOfEachColorsInHandPlayer.get(card1) > maxColor){
                 finalCardPlayed = card1;
-                maxColor = numberOfEachColor.get(card1);
+                maxColor = nbOfEachColorsInHandPlayer.get(card1);
             }    
         }
         return finalCardPlayed;
@@ -60,7 +60,7 @@ public class Player {
         int i = 0;
         int combination;
         int size = playableCards.size();
-        while(playableCards.get(i).getValue() == "EIGHT" && i<size){
+        while(playableCards.get(i).getValue().equals("EIGHT") && i<size){
             if(i == size - 1){
                 break;
             }
@@ -68,7 +68,7 @@ public class Player {
         }
         Card bestChoice = playableCards.get(i);
         for(Card card : playableCards){
-            if((combination = hasCombination(card)) > highestCombination && card.getValue() != "EIGHT"){ //if (hasCombination(card)>highestCombination)
+            if((combination = nbOfCombinationOfTheCard(card)) > highestCombination && !card.getValue().equals("EIGHT")){
                 bestChoice = card; 
                 highestCombination = combination;
             }
@@ -81,7 +81,7 @@ public class Player {
             }
         }
         if(nbOfCardsWithSameValue>1){
-            Card finalCard = finalCardToPlay(visibleCard, hasCombination(bestChoice));
+            Card finalCard = cardPlayedAtTheEndOfTheCombination(visibleCard, nbOfCombinationOfTheCard(bestChoice));
             if(bestChoice.equals(finalCard)){
                 for(Card card : playableCards){
                     if(card.haveSameValue(finalCard) && !(card.haveSameColor(finalCard))){
@@ -95,16 +95,16 @@ public class Player {
     }
 
     protected String determinColorAfterAnEight(){
-            HashMap<String, Integer> numberOfEachColor = new HashMap<String,Integer>();
+            HashMap<String, Integer> nbOfEachColorsInHandPlayer = new HashMap<String,Integer>();
             
             for(int i=0; i<handPlayer.size() ; i++){
                 if(handPlayer.get(i).getValue() != "EIGHT"){
                     String currentColor = handPlayer.get(i).getColor();
-                    if(numberOfEachColor.containsKey(currentColor)){
-                        numberOfEachColor.put(currentColor, numberOfEachColor.get(currentColor) + 1);
+                    if(nbOfEachColorsInHandPlayer.containsKey(currentColor)){
+                        nbOfEachColorsInHandPlayer.put(currentColor, nbOfEachColorsInHandPlayer.get(currentColor) + 1);
                     }
                     else{
-                        numberOfEachColor.put(currentColor, 1);
+                        nbOfEachColorsInHandPlayer.put(currentColor, 1);
                     }
                 }
             }
@@ -112,8 +112,8 @@ public class Player {
             String colorMostRepresentedInPlayerHand = "End";
             int maxColors = 0;
             int countColor = 0;
-            for(String color : numberOfEachColor.keySet()){
-                if((countColor = numberOfEachColor.get(color)) > maxColors){
+            for(String color : nbOfEachColorsInHandPlayer.keySet()){
+                if((countColor = nbOfEachColorsInHandPlayer.get(color)) > maxColors){
                     maxColors = countColor;
                     colorMostRepresentedInPlayerHand = color;
                 }
@@ -122,7 +122,7 @@ public class Player {
             return colorMostRepresentedInPlayerHand;
     }
 
-    protected static int numberOfColors(Player p, String color){
+    protected static int numberOfColorsInPlayerHand(Player p, String color){
         int count = 0;
         for(Card card: p.handPlayer){
             if(card.getColor().equals(color)){
@@ -132,7 +132,7 @@ public class Player {
         return count;
     }
 
-    protected int hasCombination(Card handCard){
+    protected int nbOfCombinationOfTheCard(Card handCard){
         int highestCombination = 1; //int -> return 1,2,3 ou 4
         for(Card card : handPlayer){
             if(card.haveSameValue(handCard) && !(card.haveSameColor(handCard))){
@@ -144,7 +144,7 @@ public class Player {
 
     protected void handPrinter(){
         for(Card card : this.handPlayer){
-            System.out.print(card.getValue()+" OF "+card.getColor()+" | ");
+            System.out.print(card.getValue() + " OF " + card.getColor() + " | ");
         }
         System.out.println();
     }
