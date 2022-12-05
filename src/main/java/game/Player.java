@@ -1,6 +1,7 @@
 package game;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.LinkedList;
 
 public class Player {  
@@ -14,7 +15,7 @@ public class Player {
     
     protected int numberOfColorsInPlayerHand(String color){
         int number = 0;
-        for(Card card: handPlayer){
+        for(Card card : this.handPlayer){
             if(card.getColor().equals(color)){
                 number++;
             }
@@ -31,10 +32,10 @@ public class Player {
         }
         Card finalCardPlayed = bestChoice;
         int maxColor = 0;
-        for(Card card1 : nbOfEachColorsInHandPlayer.keySet()){
-            if(nbOfEachColorsInHandPlayer.get(card1) > maxColor){
-                finalCardPlayed = card1;
-                maxColor = nbOfEachColorsInHandPlayer.get(card1);
+        for(Map.Entry<Card, Integer> entry : nbOfEachColorsInHandPlayer.entrySet()){
+            if(entry.getValue() > maxColor){
+                finalCardPlayed = entry.getKey();
+                maxColor = entry.getValue();
             }    
         }
         return finalCardPlayed;
@@ -47,7 +48,7 @@ public class Player {
         for(Card card : handPlayer){
             if(card.haveSameColor(visibleCard) || 
             (card.haveSameValue(visibleCard)) ||
-            (card.getValue() == "EIGHT"))
+            (card.getValue().equals("EIGHT")))
             {
                 playableCards.add(card);
             }            

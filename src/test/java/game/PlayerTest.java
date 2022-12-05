@@ -13,8 +13,6 @@ public class PlayerTest {
 
     @BeforeEach
     void setUp(){
-        Deck.deck.clear();
-        Deck.deck = Deck.deckCreation();
         game = new LocalCrazyEight();
     }
 

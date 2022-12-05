@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">l3-poo-war</a> &gt; <a href="index.source.html" class="el_package">game</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums">package game;
+
+public class Card {
+    private String value; //value of the card
+    private String color; //color of the card
+    
+<span class="fc" id="L7">    protected Card(String value, String color){ //constructeur qui récupère les informations données par les paramètres</span>
+<span class="fc" id="L8">        this.value = value; </span>
+<span class="fc" id="L9">        this.color = color;</span>
+<span class="fc" id="L10">    }</span>
+
+    public static void cardPrinter(Card card){
+<span class="nc" id="L13">        System.out.println(card.getValue() +&quot; OF &quot;+ card.getColor());</span>
+<span class="nc" id="L14">    }</span>
+
+    protected String getValue(){
+<span class="fc" id="L17">        return this.value;</span>
+    }
+
+    protected String getColor(){
+<span class="fc" id="L21">        return this.color;</span>
+    }
+
+    @Override
+    public boolean equals(Object card){
+<span class="fc bfc" id="L26" title="All 4 branches covered.">        return this.haveSameColor((Card)card) &amp;&amp; this.haveSameValue((Card)card);</span>
+    }
+
+    protected boolean haveSameColor(Card card){
+<span class="fc" id="L30">        return this.getColor().equals(card.getColor());</span>
+    }
+
+    protected boolean haveSameValue(Card card){
+<span class="fc" id="L34">        return this.getValue().equals(card.getValue());</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

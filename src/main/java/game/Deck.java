@@ -1,41 +1,50 @@
 package game;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 public class Deck {
 
     protected Deck(){
-
+        cardDeck = deckCreation();
     }
 
-    protected static LinkedList<Card> deck;
-    private static final String [] NAMES = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", "EIGHT", "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
-    private static final String [] COLORS = {"HEARTS", "DIAMONDS", "CLUBS", "SPADES"}; // les 4 couleurs constantes
-    private static Random random = new Random();
+    protected Queue<Card> cardDeck;
+    private Random random = new Random();
 
-    static{
-        deck = deckCreation();
-    }
-    public static LinkedList<Card> deckCreation(){
-        LinkedList<Card> deck = new LinkedList<>();
-        for(String name : NAMES){ // parcours des valeurs constantes
-            for(String color : COLORS){ 
-                Card carte = new Card(name, color); // appel à la classe Card pour créer un objet Carte
-                deck.add(carte); // et l'ajouter au deck
+    public Queue<Card> deckCreation(){
+        LinkedList<Card> initialDeck = new LinkedList<>();
+        for(String value : Card.getAllCardsValues()){ // parcours des valeurs constantes
+            for(String color : Card.getAllCardsColors()){ 
+                Card carte = new Card(value, color); // appel à la classe Card pour créer un objet Carte
+                initialDeck.add(carte); // et l'ajouter au deck
             }
         }
-        LinkedList<Card> finalDeck = new LinkedList<>(); //empty
-        while(!deck.isEmpty()){
-            int index = random.nextInt(deck.size());
-            finalDeck.add(deck.get(index));
-            deck.remove(index);
+        Queue<Card> shuffledDeck = new LinkedList<>(); //empty
+        while(!initialDeck.isEmpty()){
+            int index = random.nextInt(initialDeck.size());
+            shuffledDeck.add(initialDeck.get(index));
+            initialDeck.remove(index);
         } 
-        return finalDeck;
+        return shuffledDeck;
     }
 
-    protected static Card getTopCard(){
-        return deck.pollLast();
+    protected Card getTopCard(){
+        return this.cardDeck.poll();
     }
 
-   
+    protected void clearDeck(){
+        int size = this.cardDeck.size();
+        for(int i=0; i<size; i++){
+            this.cardDeck.remove();
+        }
+    }
+
+    protected int deckSize(){
+        return cardDeck.size();
+    }
+
+    protected Queue<Card> getDeck(){
+        return cardDeck;
+    }
 }

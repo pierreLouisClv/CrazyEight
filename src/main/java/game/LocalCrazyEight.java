@@ -1,6 +1,7 @@
 package game;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Deque;
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class LocalCrazyEight {
     private Player[] initialPlayers = new Player[NB_OF_PLAYERS];
     private final int NUMBER_OF_CARDS_FOR_EACH_PLAYERS = 7;
      
-    
+    private Deck gameDeck;
     private Deque<Card> allCardsPlayed = new LinkedList<Card>(); 
     protected Card lastCardPlayed;
     
@@ -24,7 +25,8 @@ public class LocalCrazyEight {
     private boolean replay; //ten power
 
     protected LocalCrazyEight(){
-        allCardsPlayed.add(Deck.getTopCard());
+        gameDeck = new Deck();
+        allCardsPlayed.add(gameDeck.getTopCard());
         lastCardPlayed = allCardsPlayed.getLast();
 
         choosenColor = allCardsPlayed.getLast().getColor();
@@ -37,9 +39,9 @@ public class LocalCrazyEight {
     
     protected void playGameWithAllActions(){
         initialisationPlayers();
-        System.out.println(Deck.deck.size());
+        System.out.println(gameDeck.deckSize());
         cardsDistribution();
-        System.out.println(Deck.deck.size());
+        System.out.println(gameDeck.deckSize());
         int realTurn;
         while(true){
             
@@ -53,7 +55,7 @@ public class LocalCrazyEight {
                 System.out.println(initialPlayers[realTurn].getName()+" KAZANDI");
                 break;
             }
-             System.out.println("Number of cards remains in deck: "+ Deck.deck.size());
+             System.out.println("Number of cards remains in deck: "+ gameDeck.deckSize());
             System.out.println("---------------------");
         }        
     }
@@ -176,7 +178,7 @@ public class LocalCrazyEight {
         Card card;
 
         for(int i=0; i < nbOfCardsPlayerMustToTake; i++){
-            if((card = Deck.getTopCard()) == null){
+            if((card = gameDeck.getTopCard()) == null){
                 deckReshuffler();
             }
             else{
@@ -263,7 +265,7 @@ public class LocalCrazyEight {
     protected void cardsDistribution(){
         for(Player p : initialPlayers){
             for(int i=0; i<NUMBER_OF_CARDS_FOR_EACH_PLAYERS; i++){
-                p.getHandPlayer().add(Deck.getTopCard());
+                p.getHandPlayer().add(gameDeck.getTopCard());
             }
         }
     }
@@ -286,7 +288,7 @@ public class LocalCrazyEight {
         LinkedList<Card> cards = (LinkedList<Card>)allCardsPlayed;
         while(!cards.isEmpty()){
             int randomNumber = random.nextInt(cards.size());
-            Deck.deck.add(cards.get(randomNumber));
+            gameDeck.getDeck().add(cards.get(randomNumber));
             cards.remove(randomNumber);
         } 
     }
@@ -295,32 +297,36 @@ public class LocalCrazyEight {
         return this.initialPlayers[determinationOfRealTurn(turn)];
     }
 
+    protected Deck getGameDeck(){
+        return this.gameDeck;
+    }
+
     protected void reverse(){
-        index = index * (-1);
+        this.index = this.index * (-1);
     }
 
     protected void nextPlayer(){
-        turn += getIndex();
+        this.turn += this.getIndex();
     }
 
     protected Deque<Card> getAllCardsPlayed(){
-        return allCardsPlayed;
+        return this.allCardsPlayed;
     }
 
     protected Player[] getInitialPlayers(){
-        return initialPlayers;
+        return this.initialPlayers;
     }
 
     protected String[] getPlayersNames(){
-        return PLAYERS_NAMES;
+        return this.PLAYERS_NAMES;
     }
 
     protected int getIndex(){
-        return index;
+        return this.index;
     }
 
     protected int getTurn(){
-        return turn;
+        return this.turn;
     }
 
     protected String getChoosenColor(){
@@ -328,6 +334,6 @@ public class LocalCrazyEight {
     }
 
     protected int getNbOfPlayers(){
-        return NB_OF_PLAYERS;
+        return this.NB_OF_PLAYERS;
     }
 }
