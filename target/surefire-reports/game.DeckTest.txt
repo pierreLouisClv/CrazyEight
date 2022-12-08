@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: game.DeckTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.052 s <<< FAILURE! - in game.DeckTest
-game.DeckTest.deckShouldLoseTwoCardsAfterPickingTwoCards  Time elapsed: 0.012 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <18> but was: <49>
-	at game.DeckTest.deckShouldLoseTwoCardsAfterPickingTwoCards(DeckTest.java:46)
-
-game.DeckTest.deckHas52Cards  Time elapsed: 0.004 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <18> but was: <49>
-	at game.DeckTest.deckHas52Cards(DeckTest.java:28)
-
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.147 s - in game.DeckTest
