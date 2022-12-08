@@ -42,13 +42,13 @@ public class Player {
     }
         
 
-    protected LinkedList<Card> getPlayableCards(Card visibleCard){
+    protected LinkedList<Card> getPlayableCards(Card lastCardPlayed){
         LinkedList<Card> playableCards = new LinkedList<Card>();
         
         for(Card card : handPlayer){
-            if(card.haveSameColor(visibleCard) || 
-            (card.haveSameValue(visibleCard)) ||
-            (card.getValue().equals("EIGHT")))
+            if(card.haveSameColor(lastCardPlayed) || 
+            (card.haveSameValue(lastCardPlayed)) ||
+            (card.getValue().equals(Card.getMostPowerfullValue())))
             {
                 playableCards.add(card);
             }            
@@ -56,24 +56,18 @@ public class Player {
         return playableCards;
     }
     
-    protected Card makeTheBestChoice(LinkedList<Card> playableCards, Card visibleCard){
+    protected Card makeTheBestChoice(LinkedList<Card> playableCards, Card lastCardPlayed){
         int highestCombination = 1;
-        int i = 0;
         int combination;
-        int size = playableCards.size();
-        while(playableCards.get(i).getValue().equals("EIGHT") && i<size){
-            if(i == size - 1){
-                break;
-            }
-            i++;
-        }
-        Card bestChoice = playableCards.get(i);
+        Card bestChoice = chooseRandomCardFromHandPlayerWhichIsNotEight(playableCards);
+        
         for(Card card : playableCards){
-            if((combination = nbOfCombinationOfTheCard(card)) > highestCombination && !card.getValue().equals("EIGHT")){
+            if((combination = nbOfCombinationOfTheCard(card)) > highestCombination && !card.getValue().equals(Card.getMostPowerfullValue())){
                 bestChoice = card; 
                 highestCombination = combination;
             }
         }
+
         String valueOfTheBestChoice = bestChoice.getValue();
         int nbOfCardsWithSameValue = 1;
         for(Card card: playableCards){
@@ -82,24 +76,16 @@ public class Player {
             }
         }
         if(nbOfCardsWithSameValue>1){
-            Card finalCard = cardPlayedAtTheEndOfTheCombination(visibleCard, nbOfCombinationOfTheCard(bestChoice));
-            if(bestChoice.equals(finalCard)){
-                for(Card card : playableCards){
-                    if(card.haveSameValue(finalCard) && !(card.haveSameColor(finalCard))){
-                        bestChoice = card;
-                        break;
-                    }
-                }
-            }
+            bestChoice = chooseBestCardWhenPlayerPlaySeveralCardsWhichHaveSameValueOfLastCardPlayed(playableCards, lastCardPlayed, bestChoice);
         }
         return bestChoice;
     }
 
     protected String determinColorAfterAnEight(){
-            HashMap<String, Integer> nbOfEachColorsInHandPlayer = new HashMap<String,Integer>();
+        Map<String, Integer> nbOfEachColorsInHandPlayer = new HashMap<>();
             
             for(int i=0; i<handPlayer.size() ; i++){
-                if(handPlayer.get(i).getValue() != "EIGHT"){
+                if(handPlayer.get(i).getValue() != Card.getMostPowerfullValue()){
                     String currentColor = handPlayer.get(i).getColor();
                     if(nbOfEachColorsInHandPlayer.containsKey(currentColor)){
                         nbOfEachColorsInHandPlayer.put(currentColor, nbOfEachColorsInHandPlayer.get(currentColor) + 1);
@@ -113,10 +99,10 @@ public class Player {
             String colorMostRepresentedInPlayerHand = "End";
             int maxColors = 0;
             int countColor = 0;
-            for(String color : nbOfEachColorsInHandPlayer.keySet()){
-                if((countColor = nbOfEachColorsInHandPlayer.get(color)) > maxColors){
+            for(Map.Entry<String, Integer> color : nbOfEachColorsInHandPlayer.entrySet()){
+                if((countColor = color.getValue()) > maxColors){
                     maxColors = countColor;
-                    colorMostRepresentedInPlayerHand = color;
+                    colorMostRepresentedInPlayerHand = color.getKey();
                 }
             }
 
@@ -160,5 +146,30 @@ public class Player {
 
     protected String getName(){
         return this.name;
+    }
+
+    protected Card chooseRandomCardFromHandPlayerWhichIsNotEight(LinkedList<Card> playableCards){
+        int i = 0;
+        int size = playableCards.size();
+        while(playableCards.get(i).getValue().equals(Card.getMostPowerfullValue()) && i<size){
+            if(i == size - 1){
+                break;
+            }
+            i++;
+        }
+        return playableCards.get(i);
+    }
+
+    protected Card chooseBestCardWhenPlayerPlaySeveralCardsWhichHaveSameValueOfLastCardPlayed(LinkedList<Card> playableCards, Card lastCardPlayed, Card bestChoice){
+        Card firstCardToPlay = bestChoice;
+            Card finalCard = cardPlayedAtTheEndOfTheCombination(lastCardPlayed, nbOfCombinationOfTheCard(bestChoice));
+            if(bestChoice.equals(finalCard)){
+                for(Card card : playableCards){
+                    if(card.haveSameValue(finalCard) && !(card.haveSameColor(finalCard))){
+                        firstCardToPlay = card;
+                    }
+                }
+            }
+        return firstCardToPlay;  
     }
 }

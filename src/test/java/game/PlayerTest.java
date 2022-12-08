@@ -144,7 +144,7 @@ public class PlayerTest {
         p.getHandPlayer().add(TwoHeart);
         game.lastCardPlayed = FiveClubs;
 
-        assertTrue(FiveDiamonds.equals(p.makeTheBestChoice(p.getPlayableCards(game.lastCardPlayed), game.lastCardPlayed)));
+        assertEquals(FiveSpades,p.makeTheBestChoice(p.getPlayableCards(game.lastCardPlayed), game.lastCardPlayed));
         assertTrue(FiveHeart.equals(p.cardPlayedAtTheEndOfTheCombination(p.makeTheBestChoice(p.getPlayableCards(game.lastCardPlayed), game.lastCardPlayed), 3)));
     }
 

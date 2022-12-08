@@ -1,7 +1,8 @@
 package game;
 
 public class Card {
-    private static final String [] VALUES = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", "EIGHT", "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
+    private static final String EIGHT = "EIGHT";
+    private static final String [] VALUES = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", EIGHT, "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
     private static final String [] COLORS = {"HEARTS", "DIAMONDS", "CLUBS", "SPADES"}; // les 4 couleurs constantes
     
     private String value; //value of the card
@@ -45,5 +46,7 @@ public class Card {
         return COLORS;
     }
 
-
+    protected static String getMostPowerfullValue(){
+        return EIGHT;
+    }
 }

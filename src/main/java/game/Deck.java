@@ -41,7 +41,7 @@ public class Deck {
     }
 
     protected int deckSize(){
-        return cardDeck.size();
+        return this.cardDeck.size();
     }
 
     protected Queue<Card> getDeck(){

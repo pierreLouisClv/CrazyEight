@@ -1,20 +1,19 @@
 package game;
 
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Deque;
 import java.util.Random;
 
 
 public class LocalCrazyEight {
 
-    private final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik", "Ken"};
-    private final int NB_OF_PLAYERS = PLAYERS_NAMES.length;
+    private static final String[] PLAYERS_NAMES = {"Naki", "PL", "Malik", "Ken"};
+    private static final int NB_OF_PLAYERS = PLAYERS_NAMES.length;
     private Player[] initialPlayers = new Player[NB_OF_PLAYERS];
-    private final int NUMBER_OF_CARDS_FOR_EACH_PLAYERS = 7;
+    private static final int NUMBER_OF_CARDS_FOR_EACH_PLAYERS = 7;
      
     private Deck gameDeck;
-    private Deque<Card> allCardsPlayed = new LinkedList<Card>(); 
+    private Deque<Card> allCardsPlayed = new LinkedList<>(); 
     protected Card lastCardPlayed;
     
     private int turn; 
@@ -35,9 +34,8 @@ public class LocalCrazyEight {
         nbOfTurnToPass = 0;
         replay = false;
     }
-
     
-    protected void playGameWithAllActions(){
+    protected Player playGameWithAllActions(){
         initialisationPlayers();
         System.out.println(gameDeck.deckSize());
         cardsDistribution();
@@ -53,7 +51,7 @@ public class LocalCrazyEight {
             
             if(initialPlayers[realTurn].hasWon()){
                 System.out.println(initialPlayers[realTurn].getName()+" KAZANDI");
-                break;
+                return initialPlayers[realTurn];
             }
              System.out.println("Number of cards remains in deck: "+ gameDeck.deckSize());
             System.out.println("---------------------");
@@ -78,7 +76,7 @@ public class LocalCrazyEight {
             this.nbOfTurnToPass --;
         }
 
-        else if(isTheCardPowerfull(this.lastCardPlayed)){
+        else if(isTheLastCardPlayedPowerfull(this.lastCardPlayed)){
         }
 
         else{
@@ -108,11 +106,11 @@ public class LocalCrazyEight {
  
     }
 
-    protected boolean isTheCardPowerfull(Card lastCardPlayed){
+    protected boolean isTheLastCardPlayedPowerfull(Card lastCardPlayed){
         Player playerTurn = this.getPlayerTurn();
 
         if(lastCardPlayed.getValue().equals("ACE") && this.nbOfAcePlayed>0){
-            LinkedList<Card> allAceOfThePlayer = new LinkedList<Card>();
+            LinkedList<Card> allAceOfThePlayer = new LinkedList<>();
             for(Card card : playerTurn.getHandPlayer()){
                 if(card.getValue().equals("ACE")){
                     allAceOfThePlayer.add(card);
@@ -130,8 +128,8 @@ public class LocalCrazyEight {
             
         }
 
-        else if(lastCardPlayed.getValue().equals("EIGHT")){
-            Card virtualNewEight = new Card("EIGHT", this.choosenColor);
+        else if(lastCardPlayed.getValue().equals(Card.getMostPowerfullValue())){
+            Card virtualNewEight = new Card(Card.getMostPowerfullValue(), this.choosenColor);
             LinkedList<Card> playableCard = playerTurn.getPlayableCards(virtualNewEight);
             if(playableCard.isEmpty()){
                 takeCard(1);
@@ -202,19 +200,19 @@ public class LocalCrazyEight {
                 return ;
             }
         }            
-            if((combination == 1) || cardPlayed.getValue().equals("EIGHT")){
-                oneCardIsPlayed(cardPlayed);
-            }
-            else if(combination == 2){                
-                playTwoCards(playerTurn, cardPlayed, playableCards);
-            }
-            else{                
-                playThreeOrFourCards(playerTurn, cardPlayed, combination);
-            }
-            
+        if((combination == 1) || cardPlayed.getValue().equals(Card.getMostPowerfullValue())){
+            oneCardIsPlayed(cardPlayed);
         }
+        else if(combination == 2){                
+            playTwoCards(playerTurn, cardPlayed, playableCards);
+        }
+        else{                
+            playThreeOrFourCards(playerTurn, cardPlayed, combination);
+        }
+            
+    }
         
-        protected void playTwoCards(Player playerTurn, Card cardPlayed, LinkedList<Card> playableCards){
+    protected void playTwoCards(Player playerTurn, Card cardPlayed, LinkedList<Card> playableCards){
             oneCardIsPlayed(cardPlayed);
             Card theSecondCardToPlay = playableCards.get(0);
                 for(Card card : playerTurn.getHandPlayer()){
@@ -317,23 +315,28 @@ public class LocalCrazyEight {
         return this.initialPlayers;
     }
 
-    protected String[] getPlayersNames(){
-        return this.PLAYERS_NAMES;
-    }
-
     protected int getIndex(){
         return this.index;
     }
-
+    
     protected int getTurn(){
         return this.turn;
     }
-
+    
     protected String getChoosenColor(){
         return this.choosenColor;
     }
+    
+    protected static String[] getPlayersNames(){
+        return PLAYERS_NAMES;
+    }
 
-    protected int getNbOfPlayers(){
-        return this.NB_OF_PLAYERS;
+    protected static int getNbOfPlayers(){
+        return NB_OF_PLAYERS;
+    }
+
+    protected int getNbOfAcePlayed(){
+        return this.nbOfAcePlayed;
     }
 }
+

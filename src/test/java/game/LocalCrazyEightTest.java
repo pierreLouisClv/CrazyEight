@@ -2,6 +2,7 @@ package game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -232,10 +233,14 @@ public class LocalCrazyEightTest {
         assertEquals(2, game.getAllCardsPlayed().size());
     }
 
-    /*@Test
+    @Test
+
+
     void twoAcesMakeTheNextPlayerDrawFourCards(){
         
-        Card nineHeart = new Card("NINE", "HEART");       
+        Card nineHeart = new Card("NINE", "HEART"); 
+        game.lastCardPlayed = nineHeart;
+        
         Card aceHeart = new Card("ACE", "HEART");
         Card aceClubs = new Card("ACE", "CLUBS");
         Card fiveClubs = new Card("FIVE", "CLUBS");
@@ -257,59 +262,168 @@ public class LocalCrazyEightTest {
         game.getInitialPlayers()[2].getHandPlayer().add(kingHeart);
         game.getInitialPlayers()[2].getHandPlayer().add(twoClubs);
 
-        int realTurn = 0; //1 DONT PLAY
-        game.playSeveralCardsOrOnlyOneCard(game.getInitialPlayers()[1].getPlayableCards(nineHeart));
+        game.playerPlayOrPass();
+        game.playerPlayOrPass();
 
         assertEquals(1, game.getInitialPlayers()[0].getHandPlayer().size());        
-        assertEquals(1, game.getTurn());
+        assertEquals(2, game.getTurn());
         assertEquals(6, game.getInitialPlayers()[1].getHandPlayer().size());
 
 
 
-    }*/
+    }
 
-    /*@Test
-    void aceCanCounterAnOtherAce(){
-
-        Card nineHeart = new Card("NINE", "HEART");
-
-        
-        Card aceHeart = new Card("ACE", "HEART");
-        Card aceClubs = new Card("ACE", "CLUBS");
-        Card fiveClubs = new Card("FIVE", "CLUBS");
-
-        game.getInitialPlayers()[0].getHandPlayer().add(aceHeart);
-        game.getInitialPlayers()[0].getHandPlayer().add(aceClubs);
-        game.getInitialPlayers()[0].getHandPlayer().add(fiveClubs);
-
-        
-        Card aceDiamonds = new Card("ACE", "DIAMONDS");
+    @Test
+    void eightChooseTheBestColorAndMakeTheNextPlayerDrawingACard(){
         Card threeClubs = new Card("THREE", "CLUBS");
-        Card aceSpades = new Card("ACE", "SPADES");
-
-
-        game.getInitialPlayers()[1].getHandPlayer().add(aceDiamonds);
-        game.getInitialPlayers()[1].getHandPlayer().add(threeClubs);
-        game.getInitialPlayers()[1].getHandPlayer().add(aceSpades);
+        game.lastCardPlayed = threeClubs;
         
+        Card twoDiamonds = new Card("TWO", "DIAMONDS");
+        Card eightHearts = new Card("EIGHT", "HEARTS");
 
-        Card kingHeart = new Card("KING", "HEART");
+        game.getInitialPlayers()[0].getHandPlayer().add(twoDiamonds);
+        game.getInitialPlayers()[0].getHandPlayer().add(eightHearts);
+
+        Card twoHearts = new Card("TWO", "HEARTS");
+        Card sevenClubs = new Card("SEVEN", "CLUBS");
+
+        game.getInitialPlayers()[1].getHandPlayer().add(twoHearts);
+        game.getInitialPlayers()[1].getHandPlayer().add(sevenClubs);
+
+        game.playerPlayOrPass();
+        game.playerPlayOrPass();
+
+        assertEquals("DIAMONDS", game.getChoosenColor());
+        assertEquals(1, game.getInitialPlayers()[0].getHandPlayer().size());
+        assertEquals(3, game.getInitialPlayers()[1].getHandPlayer().size());
+        assertEquals(2, game.getTurn());
+    }
+
+    @Test
+    void nextPlayerDontPlayAfterPlayingSeven(){
+        Card threeClubs = new Card("THREE", "CLUBS");
+        game.lastCardPlayed = threeClubs;
+        
+        Card twoDiamonds = new Card("TWO", "DIAMONDS");
+        Card sevenClubs = new Card("SEVEN", "CLUBS");
+
+        game.getInitialPlayers()[0].getHandPlayer().add(twoDiamonds);
+        game.getInitialPlayers()[0].getHandPlayer().add(sevenClubs);
+
         Card twoClubs = new Card("TWO", "CLUBS");
-        
+        Card threeHearts = new Card("THREE", "HEARTS");
 
-        game.getInitialPlayers()[2].getHandPlayer().add(kingHeart);
-        game.getInitialPlayers()[2].getHandPlayer().add(twoClubs);
-        
-        int realTurn = 0; //1 DONT PLAY
-        LocalCrazyEight.visibleCard = nineHeart;
-        LocalCrazyEight.playerTimeToPlay(realTurn);
-        LocalCrazyEight.cardPowerDeterminer(LocalCrazyEight.visibleCard);
+        game.getInitialPlayers()[1].getHandPlayer().add(twoClubs);
+        game.getInitialPlayers()[1].getHandPlayer().add(threeHearts);
+
+        game.playerPlayOrPass();
+        game.playerPlayOrPass();
 
         assertEquals(1, game.getInitialPlayers()[0].getHandPlayer().size());
+        assertEquals(2, game.getInitialPlayers()[1].getHandPlayer().size());
+        assertEquals(2, game.getTurn());
+        assertEquals(sevenClubs, game.lastCardPlayed);
+    }
 
-        assertEquals(2, LocalCrazyEight.getTurn());
+        /*@Test
+        void finalWinnerHasNoCard(){
+            Player finalWinner = game.playGameWithAllActions();;
+            assertEquals(0, finalWinner.getHandPlayer().size());
+
+        }*/
+
+        @Test
+        void aceCanCounterAnOtherAce(){
+    
+            Card nineHeart = new Card("NINE", "HEART");
+            Card aceHeart = new Card("ACE", "HEART");
+            Card aceClubs = new Card("ACE", "CLUBS");
+            Card fiveClubs = new Card("FIVE", "CLUBS");
+    
+            game.getInitialPlayers()[0].getHandPlayer().add(aceHeart);
+            game.getInitialPlayers()[0].getHandPlayer().add(aceClubs);
+            game.getInitialPlayers()[0].getHandPlayer().add(fiveClubs);
+    
+            
+            Card aceDiamonds = new Card("ACE", "DIAMONDS");
+            Card threeClubs = new Card("THREE", "CLUBS");
+            Card aceSpades = new Card("ACE", "SPADES");
+    
+    
+            game.getInitialPlayers()[1].getHandPlayer().add(aceDiamonds);
+            game.getInitialPlayers()[1].getHandPlayer().add(threeClubs);
+            game.getInitialPlayers()[1].getHandPlayer().add(aceSpades);
+            
+    
+            Card kingHeart = new Card("KING", "HEART");
+            Card twoClubs = new Card("TWO", "CLUBS");
+            
+    
+            game.getInitialPlayers()[2].getHandPlayer().add(kingHeart);
+            game.getInitialPlayers()[2].getHandPlayer().add(twoClubs);
+            
+            int realTurn = 0; //1 DONT PLAY
+            game.lastCardPlayed = nineHeart;
+            game.playerTimeToPlay(realTurn);
+            game.isTheLastCardPlayedPowerfull(game.lastCardPlayed);
+    
+            assertEquals(1, game.getInitialPlayers()[0].getHandPlayer().size());
+    
+            assertEquals(1, game.getTurn());
+            assertEquals(1, game.getInitialPlayers()[1].getHandPlayer().size());
+            assertEquals(10, game.getInitialPlayers()[2].getHandPlayer().size() + game.getNbOfAcePlayed()*2);
+        }
+
+    @Test
+    void jackMakePreviousPlayerPlay(){
+        Card threeClubs = new Card("THREE", "CLUBS");
+        game.lastCardPlayed = threeClubs;
+        
+        Card twoDiamonds = new Card("TWO", "DIAMONDS");
+        Card fiveClubs = new Card("FIVE", "CLUBS");
+
+        game.getInitialPlayers()[0].getHandPlayer().add(twoDiamonds);
+        game.getInitialPlayers()[0].getHandPlayer().add(fiveClubs);
+
+        Card jackClubs = new Card("JACK", "CLUBS");
+        Card threeHearts = new Card("THREE", "HEARTS");
+
+        game.getInitialPlayers()[1].getHandPlayer().add(jackClubs);
+        game.getInitialPlayers()[1].getHandPlayer().add(threeHearts);
+
+        game.playerPlayOrPass();
+        game.playerPlayOrPass();
+
+        assertEquals(0, game.getTurn());
+        assertEquals(1, game.getInitialPlayers()[0].getHandPlayer().size());
         assertEquals(1, game.getInitialPlayers()[1].getHandPlayer().size());
-        assertEquals(10, game.getInitialPlayers()[2].getHandPlayer().size());
-    }*/
+        assertEquals(jackClubs, game.lastCardPlayed);
+    }
 
+    @Test
+    void tenMakeThePlayerPlayTwoTime(){
+        Card threeClubs = new Card("THREE", "CLUBS");
+        game.lastCardPlayed = threeClubs;
+        
+        Card twoDiamonds = new Card("TWO", "DIAMONDS");
+        Card tenClubs = new Card("TEN", "CLUBS");
+        Card fiveClubs = new Card("FIVE", "CLUBS");
+
+        game.getInitialPlayers()[0].getHandPlayer().add(twoDiamonds);
+        game.getInitialPlayers()[0].getHandPlayer().add(tenClubs);
+        game.getInitialPlayers()[0].getHandPlayer().add(fiveClubs);
+
+        Card jackClubs = new Card("JACK", "CLUBS");
+        Card threeHearts = new Card("THREE", "HEARTS");
+
+        game.getInitialPlayers()[1].getHandPlayer().add(jackClubs);
+        game.getInitialPlayers()[1].getHandPlayer().add(threeHearts);
+
+        game.playerPlayOrPass();
+        game.playerPlayOrPass();
+
+        assertEquals(fiveClubs, game.lastCardPlayed);
+        assertEquals(1,game.getInitialPlayers()[0].getHandPlayer().size());
+        assertEquals(1, game.getTurn());
+    }
 }

@@ -29,7 +29,7 @@ public class DeckTest {
     void cardsAreUnique(){
         Set<Card> deckSet =new HashSet<Card>(newDeck.cardDeck);
 
-        assertTrue(deckSet.size()== newDeck.cardDeck.size());
+        assertEquals(deckSet.size(), newDeck.cardDeck.size());
     }
 
     @Test
@@ -55,6 +55,13 @@ public class DeckTest {
 
         assertEquals(50, newDeck.cardDeck.size());
 
+    }
+
+    @Test
+    void clearDeckTest(){
+        newDeck.deckCreation();
+        newDeck.clearDeck();
+        assertEquals(0, newDeck.deckSize());
     }
     
 }
