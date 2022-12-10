@@ -2,7 +2,6 @@ package game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ public class LocalCrazyEightTest {
     void setUp(){
         game = new LocalCrazyEight();
         game.initialisationPlayers();
-        /*game.nbOfAcePlayed=0;*/
     }
 
     @Test
@@ -325,12 +323,12 @@ public class LocalCrazyEightTest {
         assertEquals(sevenClubs, game.lastCardPlayed);
     }
 
-        /*@Test
+        @Test
         void finalWinnerHasNoCard(){
-            Player finalWinner = game.playGameWithAllActions();;
+            Player finalWinner = game.play();
             assertEquals(0, finalWinner.getHandPlayer().size());
 
-        }*/
+        }
 
         @Test
         void aceCanCounterAnOtherAce(){
@@ -362,9 +360,8 @@ public class LocalCrazyEightTest {
             game.getInitialPlayers()[2].getHandPlayer().add(kingHeart);
             game.getInitialPlayers()[2].getHandPlayer().add(twoClubs);
             
-            int realTurn = 0; //1 DONT PLAY
             game.lastCardPlayed = nineHeart;
-            game.playerTimeToPlay(realTurn);
+            game.letPlayerPlay();
             game.isTheLastCardPlayedPowerfull(game.lastCardPlayed);
     
             assertEquals(1, game.getInitialPlayers()[0].getHandPlayer().size());

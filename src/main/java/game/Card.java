@@ -1,5 +1,8 @@
 package game;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Card {
     private static final String EIGHT = "EIGHT";
     private static final String [] VALUES = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", EIGHT, "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
@@ -36,6 +39,28 @@ public class Card {
 
     protected boolean haveSameValue(Card card){
         return this.getValue().equals(card.getValue());
+    }
+
+    public static Card valueOf(String str) {
+        String[] card = str.split(",");
+        return new Card(card[0], card[1]);
+
+    }
+
+    @Override
+    public String toString(){
+        return "" + this.getValue() + "," + this.getColor();
+    }
+
+    public static String cardsToString(Card[] cards) {
+        return Arrays.stream(cards).map(Card::toString).collect(Collectors.joining(";"));
+    }
+
+    public static Card[] stringToCards(String cards) {
+        if (cards.isEmpty()) {
+            return new Card[0];
+        }
+        return (Card[]) Arrays.stream(cards.split(";")).map(Card::valueOf).toArray(Card[]::new);
     }
 
     protected static String[] getAllCardsValues(){

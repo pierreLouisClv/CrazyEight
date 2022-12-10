@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.LinkedList;
 
 public class Player {  
-    private String name;
-    private LinkedList<Card> handPlayer = new LinkedList<>();
+    protected String name;
+    protected LinkedList<Card> handPlayer = new LinkedList<>();
 
     protected Player(String name){
         this.name = name;
@@ -172,4 +172,5 @@ public class Player {
             }
         return firstCardToPlay;  
     }
+
 }
