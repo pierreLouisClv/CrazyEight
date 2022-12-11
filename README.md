@@ -1,38 +1,20 @@
-# Règles
+Règles du jeu :
 
-Le jeu se joue à au moins deux joueurs et comporte un maitre du jeu non joueur.
+Mise en place :
 
-## Mise en place
+Une partie se joue à au moins deux joueurs. Chaque joueur possède huit cartes au départ qu'il peut consulter.
+Une partie comporte un Deck, mélangé, contenant le reste des cartes. La première carte est visible par tous les joueurs.
 
-Chaque joueur reçoit un nombre déterminé de cartes tirées aléatoirement, qu'il garde face cachée.
+Déroulé de la partie :
+Les joueurs jouent chacun leur tour. Celui qui commence est tiré au sort. Le premier joueur qui n'a plus de carte remporte la partie.
 
-## Déroulé de la partie
+Spécificités :
+Le joueur peut jouer plusieurs cartes de la même dans un même tour en les combinant.
+Certaines cartes possèdent des pouvoirs :
+- l'AS fait piocher deux cartes au prochain joueur. Son pouvoir est cumulable et peut être contré uniquement dans le cas où le joueur suivant possède un AS.
+- le SEPT saute le tour du prochain joueur. Son pouvoir est cumulable. 
+- le HUIT permet au joueur de forcer le prochain joueur à jouer sur une couleur en particulier. Le HUIT peut être joué à n'importe quel moment.
+- le DIX fait jouer le joueur une deuxième fois. Son pouvoir n'est pas cumulable.
+- le VALET inverse le sens de la partie.
 
-Les joueurs sont répartis dans l'ordre d'arrivée. Chaque joueur affronte le prochain dans un duel, à tour de rôle (le dernier joueur affronte le premier). Si un joueur n'a plus de carte, il perd la partie et ne peut plus joueur.
-
-### Déroulé des duels
-
-* Lors d'un duel, chacun de joueur joue une carte de sa pile. Le joueur ayant joué la carte de plus haute valeur l'emporte et met sous sa pile les cartes jouées, en les mélangeant.
-* Si les deux joueurs ont joué une carte de même valeur, le duel recommence en accumulant les cartes jouées de telle sorte à ce que le gagnant empoche la totalité des cartes du duel.
-
-## Fin de la partie
-
-Le gagnant est le dernier joueur en lice.
-
-### Détail des classes principales
-
-Un exemple de jeu supportant le réseau
-
-* LocalWarGame la version du jeu supportant le jeu en local
-* WarGameEngine le moteur du jeu
-* WarGameNetorkPlayer le joueur distant en cas de partie réseau
-* WarGameNetworkEngine la version du jeu supportant le réseau
-
-
-# Protocole réseau
-
-> Le protocole réseau définit les séquences des commandes échangées entre les différentes parties prenantes. Il doit contenir, pour chaque commande, l'expéditeur, le destinataire, le nom de la commande et le contenu du corps de la commande.
-
-![protocole](doc/protocle.png)
-
-
+Le jeu est formé d'un moteur de jeu (CrazyEightEngine) et d'un mode de jeu en local (LocalCrazyEight).

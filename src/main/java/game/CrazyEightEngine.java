@@ -19,6 +19,8 @@ public abstract class CrazyEightEngine {
     private String choosenColor; // eight power
     private boolean replay; // ten power
 
+    protected Random random = new Random();
+
     protected void play() {
         cardsDistribution();
         while (true) {
@@ -42,10 +44,12 @@ public abstract class CrazyEightEngine {
     protected void playerPlayOrPass() {
         Player playerTurn = this.getPlayerTurn();
 
-        if (this.nbOfTurnToPass != 0) { // Si un 7 a été posé le joueur passe son tour
+        /* Si un SEPT a été posé le joueur passe son tour */
+        if (this.nbOfTurnToPass != 0) {
             this.nbOfTurnToPass--;
         }
 
+        /* si la carte jouée juste avant est un AS ou un HUIT */
         else if (isTheLastCardPlayedPowerfull(this.lastCardPlayed)) {
         }
 
@@ -57,9 +61,11 @@ public abstract class CrazyEightEngine {
                 playSeveralCardsOrOnlyOneCard(playableCards);
             }
         }
+        /* Si le joueur vient de poser un DIX, il peut rejouer */
         if (this.replay) {
             this.replay = false;
         } else {
+            /* passe au joueur suivant */
             this.nextPlayer();
         }
     }
@@ -74,6 +80,7 @@ public abstract class CrazyEightEngine {
                     allAceOfThePlayer.add(card);
                 }
             }
+            /* le joueur n'a pas d'AS pour contrer le pouvoir */
             if (allAceOfThePlayer.isEmpty()) {
                 takeCard(this.nbOfAcePlayed * 2);
                 this.nbOfAcePlayed = 0;
@@ -81,12 +88,15 @@ public abstract class CrazyEightEngine {
                 playSeveralCardsOrOnlyOneCard(allAceOfThePlayer);
             }
 
+            /* renvoie true pour signaler que le joueur a du s'adapter à la carte précédente */
             return true;
 
         }
 
         else if (lastCardPlayed.getValue().equals(Card.getMostPowerfullValue())) {
+            /* créer une carte qui possède la couleur choisie par le joueur qui a posé le HUIT */
             Card virtualNewEight = new Card(Card.getMostPowerfullValue(), this.choosenColor);
+            /* cela impact les cartes jouables du joueur en cours */
             LinkedList<Card> playableCard = playerTurn.getPlayableCards(virtualNewEight);
             if (playableCard.isEmpty()) {
                 takeCard(1);
@@ -102,13 +112,12 @@ public abstract class CrazyEightEngine {
 
     protected void getCardPower(Card card) {
         switch (card.getValue()) {
-            case "ACE":
-                this.nbOfAcePlayed++; // itération du nombre d'ace en jeu
+            case "ACE": /*itération du nombre d'ace en jeu*/
+                this.nbOfAcePlayed++;
                 break;
 
-            case "EIGHT":
-                this.choosenColor = this.getPlayerTurn().determinColorAfterAnEight(); // définit la couleur choisie par
-                                                                                      // le joueur
+            case "EIGHT": // définit la couleur choisie par le joueur
+                this.choosenColor = this.getPlayerTurn().determinColorAfterAnEight();
                 break;
 
             case "TEN":
@@ -119,7 +128,7 @@ public abstract class CrazyEightEngine {
                 this.reverse();
                 break;
 
-            case "SEVEN":
+            case "SEVEN": 
                 this.nbOfTurnToPass += 1;
                 break;
 
@@ -134,6 +143,7 @@ public abstract class CrazyEightEngine {
         System.out.println(playerTurn.getName() + " takes " + nbOfCardsPlayerMustToTake + " card ...");
 
         for (int i = 0; i < nbOfCardsPlayerMustToTake; i++) {
+            /* renouvèle le deck si le Deck n'a plus de carte */
             if ((card = gameDeck.getDeckTopCard()) == null) {
                 deckReshuffler();
             } else {
@@ -146,6 +156,7 @@ public abstract class CrazyEightEngine {
         Player playerTurn = this.getPlayerTurn();
 
         int size = playableCards.size();
+        /* définit une carte par défaut */
         Card cardPlayed = playableCards.get(0);
         int combination = playerTurn.nbOfCombinationOfTheCard(cardPlayed);
         if (size > 1) {
@@ -208,18 +219,23 @@ public abstract class CrazyEightEngine {
         this.allCardsPlayed.add(cardPlayed);
         Card.cardPrinter(cardPlayed);
         playerTurn.getHandPlayer().remove(cardPlayed);
+
+        /* Appel du pouvoir de la carte quand elle est jouée */
         getCardPower(cardPlayed);
         this.lastCardPlayed = this.allCardsPlayed.getLast();
     }
+    
+    protected void gameInitialisation() {
+        gameDeck = new Deck();
+        allCardsPlayed.add(gameDeck.getDeckTopCard());
+        lastCardPlayed = allCardsPlayed.getLast();
 
-    private int determinationOfRealTurn(int turn) {
-        int nbOfPlayers = getNbOfPlayers();
-        if (turn % nbOfPlayers >= 0) {
-            return turn % nbOfPlayers;
-        } else {
-            return turn % nbOfPlayers + nbOfPlayers;
-        }
-
+        choosenColor = allCardsPlayed.getLast().getColor();
+        turn = random.nextInt(getNbOfPlayers()-1);
+        index = 1;
+        nbOfAcePlayed = 0;
+        nbOfTurnToPass = 0;
+        replay = false;
     }
 
     protected void cardsDistribution() {
@@ -230,18 +246,6 @@ public abstract class CrazyEightEngine {
         }
     }
 
-    protected void gameInitialisation() {
-        gameDeck = new Deck();
-        allCardsPlayed.add(gameDeck.getDeckTopCard());
-        lastCardPlayed = allCardsPlayed.getLast();
-
-        choosenColor = allCardsPlayed.getLast().getColor();
-        index = 1;
-        nbOfAcePlayed = 0;
-        nbOfTurnToPass = 0;
-        replay = false;
-    }
-
     protected void deckReshuffler() {
         Random random = new Random();
         LinkedList<Card> cards = (LinkedList<Card>) allCardsPlayed;
@@ -250,6 +254,16 @@ public abstract class CrazyEightEngine {
             gameDeck.getDeck().add(cards.get(randomNumber));
             cards.remove(randomNumber);
         }
+    }
+
+    private int determinationOfRealTurn(int turn) {
+        int nbOfPlayers = getNbOfPlayers();
+        if (turn % nbOfPlayers >= 0) {
+            return turn % nbOfPlayers;
+        } else {
+            return turn % nbOfPlayers + nbOfPlayers;
+        }    
+        
     }
 
     protected Player getPlayerTurn() {

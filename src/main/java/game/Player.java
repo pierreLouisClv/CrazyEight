@@ -77,25 +77,28 @@ public class Player {
     }
 
     /**
-     * cette méthode est utilisée dans le cas où le joueur doit jouer plusieurs
+     * Cette méthode est utilisée dans le cas où le joueur doit jouer plusieurs
      * cartes combinables (de la même valeur)
-     * elle donne l'information de la carte qu'il faut jouer en dernière position.
-     * Ceci permet au joueur de choisir la couleur sur laquelle le prochain joueur
-     * va jouer
+     * Elle donne l'information de la carte qu'il faut jouer en dernière position.
+     * Ceci permet au joueur de choisir la couleur sur laquelle le prochain joueur devra jouer
      * 
      * @param bestChoice  la première carte de la combinaison
      * @param combination le nombre de carte qui sont jouées par le joueur au total
      * @return la dernière carte à jouer
      */
     protected Card cardPlayedAtTheEndOfTheCombination(Card bestChoice, int combination) {
+        /* HashMap stockant pour chaque carte le nombre de carte qui possède la meme couleur que celle-ci*/
         HashMap<Card, Integer> nbOfEachColorsInHandPlayer = new HashMap<>(combination - 1);
         for (Card card : handPlayer) {
+            /* parcours des cartes combinables avec bestChoice (la première carte jouée) */
             if ((card.haveSameValue(bestChoice)) && !(card.haveSameColor(bestChoice))) {
-                nbOfEachColorsInHandPlayer.put(card, numberOfColorsInPlayerHand(card.getColor()));
+                nbOfEachColorsInHandPlayer.put(card, nbOfCardsWithCommonColorInPlayeHand(card.getColor()));
             }
         }
+
         Card finalCardPlayed = bestChoice;
         int maxColor = 0;
+        /* détermine la carte qui a la plus grande de carte avec la même couleur en commun */
         for (Map.Entry<Card, Integer> entry : nbOfEachColorsInHandPlayer.entrySet()) {
             if (entry.getValue() > maxColor) {
                 finalCardPlayed = entry.getKey();
@@ -107,21 +110,24 @@ public class Player {
 
     /**
      * cette méthode permet au joueur qui a posé un HUIT de déterminer la couleur
-     * qui l'arrange le plus pour
-     * la suite de la partie.
+     * qui l'arrange le plus pour la suite de la partie.
      * 
-     * @return la couleur qui a le plus grand nombre de cartes dans la main du
-     *         joueur
+     * @return la couleur qui a le plus grand nombre de cartes dans la main du joueur
      */
     protected String determinColorAfterAnEight() {
+        /* HashMap stockant pour chaque couleur son nombre de carte associé*/
         Map<String, Integer> nbOfEachColorsInHandPlayer = new HashMap<>();
 
         for (int i = 0; i < handPlayer.size(); i++) {
+            /* parcours la main du joueur sans inclure les HUIT */
             if (!handPlayer.get(i).getValue().equals(Card.getMostPowerfullValue())) {
                 String currentColor = handPlayer.get(i).getColor();
+                /* Si on a déjà parcouru une carte de la couleur currentColor */
                 if (nbOfEachColorsInHandPlayer.containsKey(currentColor)) {
+                    /* la valeur associée à cette couleur est incrémentée de 1 */
                     nbOfEachColorsInHandPlayer.put(currentColor, nbOfEachColorsInHandPlayer.get(currentColor) + 1);
                 } else {
+                    /* Sinon on crée une entrée dans le HashMap avec la valeur initiale de 1 */
                     nbOfEachColorsInHandPlayer.put(currentColor, 1);
                 }
             }
@@ -130,6 +136,7 @@ public class Player {
         String colorMostRepresentedInPlayerHand = "";
         int maxColors = 0;
         int countColor = 0;
+        /* détermine la couleur la plus présente dans la main du joueur en comparant les valeurs pour chaque couleur */
         for (Map.Entry<String, Integer> color : nbOfEachColorsInHandPlayer.entrySet()) {
             if ((countColor = color.getValue()) > maxColors) {
                 maxColors = countColor;
@@ -148,7 +155,7 @@ public class Player {
      * @param color la couleur concernée
      * @return un nombre entier, 0 par défaut
      */
-    private int numberOfColorsInPlayerHand(String color) {
+    private int nbOfCardsWithCommonColorInPlayeHand(String color) {
         int number = 0;
         for (Card card : this.handPlayer) {
             if (card.getColor().equals(color)) {
@@ -168,13 +175,13 @@ public class Player {
      * @return le nombre de carte combinable, 1 par défaut.
      */
     protected int nbOfCombinationOfTheCard(Card handCard) {
-        int highestCombination = 1;
+        int combination = 1;
         for (Card card : handPlayer) {
             if (card.haveSameValue(handCard) && !(card.haveSameColor(handCard))) {
-                highestCombination++;
+                combination++;
             }
         }
-        return highestCombination;
+        return combination;
     }
 
     /**
@@ -217,10 +224,13 @@ public class Player {
     private Card chooseBestCardWhenPlayerPlaySeveralCardsWhichHaveSameValueOfLastCardPlayed(
             LinkedList<Card> playableCards, Card lastCardPlayed, Card bestChoice) {
         Card firstCardToPlay = bestChoice;
+        /*définit dans un premier temps la carte joué à la fin */
         Card finalCard = cardPlayedAtTheEndOfTheCombination(lastCardPlayed, nbOfCombinationOfTheCard(bestChoice));
+        /* si la carte définie est égal à celle qui devait être jouée en premier */
         if (bestChoice.equals(finalCard)) {
             for (Card card : playableCards) {
                 if (card.haveSameValue(finalCard) && !(card.haveSameColor(finalCard))) {
+                    /* on définit une autre carte à jouer en premier qui n'est pas égal à finalCard */
                     firstCardToPlay = card;
                 }
             }
