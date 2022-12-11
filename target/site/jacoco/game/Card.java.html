@@ -2,52 +2,62 @@
 
 public class Card {
     private static final String EIGHT = &quot;EIGHT&quot;;
-<span class="fc" id="L5">    private static final String [] VALUES = {&quot;ACE&quot;, &quot;KING&quot;, &quot;QUEEN&quot;, &quot;JACK&quot;, &quot;TEN&quot;, &quot;NINE&quot;, EIGHT, &quot;SEVEN&quot;,&quot;SIX&quot;, &quot;FIVE&quot;, &quot;FOUR&quot;, &quot;THREE&quot;, &quot;TWO&quot;}; // les 8 valeurs constantes</span>
-<span class="fc" id="L6">    private static final String [] COLORS = {&quot;HEARTS&quot;, &quot;DIAMONDS&quot;, &quot;CLUBS&quot;, &quot;SPADES&quot;}; // les 4 couleurs constantes</span>
-    
-    private String value; //value of the card
-    private String color; //color of the card
-    
-<span class="fc" id="L11">    protected Card(String value, String color){ //constructeur qui récupère les informations données par les paramètres</span>
-<span class="fc" id="L12">        this.value = value; </span>
-<span class="fc" id="L13">        this.color = color;</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L5">    private static final String[] VALUES = { &quot;ACE&quot;, &quot;KING&quot;, &quot;QUEEN&quot;, &quot;JACK&quot;, &quot;TEN&quot;, &quot;NINE&quot;, EIGHT, &quot;SEVEN&quot;, &quot;SIX&quot;,</span>
+            &quot;FIVE&quot;, &quot;FOUR&quot;, &quot;THREE&quot;, &quot;TWO&quot; }; 
+<span class="fc" id="L7">    private static final String[] COLORS = { &quot;HEARTS&quot;, &quot;DIAMONDS&quot;, &quot;CLUBS&quot;, &quot;SPADES&quot; }; </span>
 
-    public static void cardPrinter(Card card){
-<span class="nc" id="L17">        System.out.println(card.getValue() +&quot; OF &quot;+ card.getColor());</span>
-<span class="nc" id="L18">    }</span>
+    private String value;
+    private String color; 
 
-    protected String getValue(){
-<span class="fc" id="L21">        return this.value;</span>
+<span class="fc" id="L12">    protected Card(String value, String color) { // constructeur qui récupère les informations données par les</span>
+                                                 // paramètres
+<span class="fc" id="L14">        this.value = value;</span>
+<span class="fc" id="L15">        this.color = color;</span>
+<span class="fc" id="L16">    }</span>
+
+    public static void cardPrinter(Card card) {
+<span class="fc" id="L19">        System.out.println(card.getValue() + &quot; OF &quot; + card.getColor());</span>
+<span class="fc" id="L20">    }</span>
+
+    protected String getValue() {
+<span class="fc" id="L23">        return this.value;</span>
     }
 
-    protected String getColor(){
-<span class="fc" id="L25">        return this.color;</span>
+    protected String getColor() {
+<span class="fc" id="L27">        return this.color;</span>
     }
 
     @Override
-    public boolean equals(Object card){
-<span class="fc bfc" id="L30" title="All 4 branches covered.">        return this.haveSameColor((Card)card) &amp;&amp; this.haveSameValue((Card)card);</span>
+    public boolean equals(Object card) {
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if(card instanceof Card){</span>
+<span class="fc bfc" id="L33" title="All 4 branches covered.">            return this.haveSameColor((Card) card) &amp;&amp; this.haveSameValue((Card) card);</span>
+        }
+<span class="nc" id="L35">        return false;</span>
     }
 
-    protected boolean haveSameColor(Card card){
-<span class="fc" id="L34">        return this.getColor().equals(card.getColor());</span>
+    @Override
+    public int hashCode() {
+<span class="fc" id="L40">        return super.hashCode();</span>
     }
 
-    protected boolean haveSameValue(Card card){
-<span class="fc" id="L38">        return this.getValue().equals(card.getValue());</span>
+    protected boolean haveSameColor(Card card) {
+<span class="fc" id="L44">        return this.getColor().equals(card.getColor());</span>
     }
 
-    protected static String[] getAllCardsValues(){
-<span class="fc" id="L42">        return VALUES;</span>
+    protected boolean haveSameValue(Card card) {
+<span class="fc" id="L48">        return this.getValue().equals(card.getValue());</span>
     }
 
-    protected static String[] getAllCardsColors(){
-<span class="fc" id="L46">        return COLORS;</span>
+    protected static String[] getAllCardsValues() {
+<span class="fc" id="L52">        return VALUES;</span>
     }
 
-    protected static String getMostPowerfullValue(){
-<span class="fc" id="L50">        return EIGHT;</span>
+    protected static String[] getAllCardsColors() {
+<span class="fc" id="L56">        return COLORS;</span>
+    }
+
+    protected static String getMostPowerfullValue() {
+<span class="fc" id="L60">        return EIGHT;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

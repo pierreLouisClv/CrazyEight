@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="game.LocalCrazyEightTest" time="0.236" tests="17" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="game.LocalCrazyEightTest" time="0.224" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight\target\test-classes;C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight\target\classes;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\ASUS\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\ASUS\.m2\repository\fr\pantheonsorbonne\miage\poo-player\1.0.0-SNAPSHOT\poo-player-1.0.0-SNAPSHOT.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core\3.19.0\camel-core-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-engine\3.19.0\camel-core-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base-engine\3.19.0\camel-base-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-reifier\3.19.0\camel-core-reifier-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-processor\3.19.0\camel-core-processor-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-languages\3.19.0\camel-core-languages-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-model\3.19.0\camel-core-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-bean\3.19.0\camel-bean-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-browse\3.19.0\camel-browse-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-cluster\3.19.0\camel-cluster-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-controlbus\3.19.0\camel-controlbus-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataformat\3.19.0\camel-dataformat-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataset\3.19.0\camel-dataset-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-direct\3.19.0\camel-direct-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-directvm\3.19.0\camel-directvm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-file\3.19.0\camel-file-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-health\3.19.0\camel-health-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-language\3.19.0\camel-language-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-log\3.19.0\camel-log-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-mock\3.19.0\camel-mock-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-ref\3.19.0\camel-ref-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-rest\3.19.0\camel-rest-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-tooling-model\3.19.0\camel-tooling-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-saga\3.19.0\camel-saga-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-scheduler\3.19.0\camel-scheduler-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-seda\3.19.0\camel-seda-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-stub\3.19.0\camel-stub-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-validator\3.19.0\camel-validator-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-vm\3.19.0\camel-vm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xpath\3.19.0\camel-xpath-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xslt\3.19.0\camel-xslt-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxb\3.19.0\camel-xml-jaxb-3.19.0.jar;C:\Users\ASUS\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.3\jakarta.xml.bind-api-2.3.3.jar;C:\Users\ASUS\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.2\jakarta.activation-api-1.2.2.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-impl\2.3.3\jaxb-impl-2.3.3.jar;C:\Users\ASUS\.m2\repository\com\sun\activation\jakarta.activation\1.2.2\jakarta.activation-1.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxp\3.19.0\camel-xml-jaxp-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-io-util\3.19.0\camel-xml-io-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-main\3.19.0\camel-main-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-api\3.19.0\camel-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base\3.19.0\camel-base-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-management-api\3.19.0\camel-management-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-support\3.19.0\camel-support-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util\3.19.0\camel-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jms\3.19.0\camel-jms-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-spring\3.19.0\camel-spring-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-core\5.3.23\spring-core-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jcl\5.3.23\spring-jcl-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-aop\5.3.23\spring-aop-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-expression\5.3.23\spring-expression-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jms\5.3.23\spring-jms-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-messaging\5.3.23\spring-messaging-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-context\5.3.23\spring-context-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-tx\5.3.23\spring-tx-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-beans\5.3.23\spring-beans-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\apache\geronimo\specs\geronimo-jms_2.0_spec\1.0-alpha-2\geronimo-jms_2.0_spec-1.0-alpha-2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-timer\3.19.0\camel-timer-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-jms-client\2.26.0\artemis-jms-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-core-client\2.26.0\artemis-core-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jgroups\jgroups\5.2.0.Final\jgroups-5.2.0.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-epoll\4.1.79.Final\netty-transport-native-epoll-4.1.79.Final-linux-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.79.Final\netty-transport-native-unix-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.79.Final\netty-transport-classes-epoll-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-kqueue\4.1.79.Final\netty-transport-native-kqueue-4.1.79.Final-osx-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-kqueue\4.1.79.Final\netty-transport-classes-kqueue-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-http\4.1.79.Final\netty-codec-http-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-buffer\4.1.79.Final\netty-buffer-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport\4.1.79.Final\netty-transport-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-resolver\4.1.79.Final\netty-resolver-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler\4.1.79.Final\netty-handler-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler-proxy\4.1.79.Final\netty-handler-proxy-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec\4.1.79.Final\netty-codec-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-socks\4.1.79.Final\netty-codec-socks-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-common\4.1.79.Final\netty-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-commons\2.26.0\artemis-commons-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\ASUS\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\ASUS\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ASUS\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-selector\2.26.0\artemis-selector-2.26.0.jar;C:\Users\ASUS\.m2\repository\jakarta\jms\jakarta.jms-api\2.0.3\jakarta.jms-api-2.0.3.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-api\2.19.0\log4j-api-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-core\2.19.0\log4j-core-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.19.0\log4j-slf4j-impl-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-jul\2.19.0\log4j-jul-2.19.0.jar;C:\Users\ASUS\.m2\repository\com\google\guava\guava\31.1-jre\guava-31.1-jre.jar;C:\Users\ASUS\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\ASUS\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\ASUS\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\ASUS\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\ASUS\.m2\repository\com\google\errorprone\error_prone_annotations\2.11.0\error_prone_annotations-2.11.0.jar;C:\Users\ASUS\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\ASUS\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.1.1\caffeine-3.1.1.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-console\3.19.0\camel-console-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util-json\3.19.0\camel-util-json-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jackson\3.19.0\camel-jackson-3.19.0.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.4\jackson-databind-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.4\jackson-annotations-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.4\jackson-core-2.13.4.jar;"/>
+    <property name="java.class.path" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight-2\target\test-classes;C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight-2\target\classes;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\ASUS\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\ASUS\.m2\repository\fr\pantheonsorbonne\miage\poo-player\1.0.0-SNAPSHOT\poo-player-1.0.0-SNAPSHOT.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core\3.19.0\camel-core-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-engine\3.19.0\camel-core-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base-engine\3.19.0\camel-base-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-reifier\3.19.0\camel-core-reifier-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-processor\3.19.0\camel-core-processor-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-languages\3.19.0\camel-core-languages-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-model\3.19.0\camel-core-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-bean\3.19.0\camel-bean-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-browse\3.19.0\camel-browse-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-cluster\3.19.0\camel-cluster-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-controlbus\3.19.0\camel-controlbus-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataformat\3.19.0\camel-dataformat-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataset\3.19.0\camel-dataset-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-direct\3.19.0\camel-direct-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-directvm\3.19.0\camel-directvm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-file\3.19.0\camel-file-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-health\3.19.0\camel-health-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-language\3.19.0\camel-language-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-log\3.19.0\camel-log-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-mock\3.19.0\camel-mock-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-ref\3.19.0\camel-ref-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-rest\3.19.0\camel-rest-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-tooling-model\3.19.0\camel-tooling-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-saga\3.19.0\camel-saga-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-scheduler\3.19.0\camel-scheduler-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-seda\3.19.0\camel-seda-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-stub\3.19.0\camel-stub-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-validator\3.19.0\camel-validator-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-vm\3.19.0\camel-vm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xpath\3.19.0\camel-xpath-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xslt\3.19.0\camel-xslt-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxb\3.19.0\camel-xml-jaxb-3.19.0.jar;C:\Users\ASUS\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.3\jakarta.xml.bind-api-2.3.3.jar;C:\Users\ASUS\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.2\jakarta.activation-api-1.2.2.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-impl\2.3.3\jaxb-impl-2.3.3.jar;C:\Users\ASUS\.m2\repository\com\sun\activation\jakarta.activation\1.2.2\jakarta.activation-1.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxp\3.19.0\camel-xml-jaxp-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-io-util\3.19.0\camel-xml-io-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-main\3.19.0\camel-main-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-api\3.19.0\camel-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base\3.19.0\camel-base-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-management-api\3.19.0\camel-management-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-support\3.19.0\camel-support-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util\3.19.0\camel-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jms\3.19.0\camel-jms-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-spring\3.19.0\camel-spring-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-core\5.3.23\spring-core-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jcl\5.3.23\spring-jcl-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-aop\5.3.23\spring-aop-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-expression\5.3.23\spring-expression-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jms\5.3.23\spring-jms-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-messaging\5.3.23\spring-messaging-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-context\5.3.23\spring-context-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-tx\5.3.23\spring-tx-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-beans\5.3.23\spring-beans-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\apache\geronimo\specs\geronimo-jms_2.0_spec\1.0-alpha-2\geronimo-jms_2.0_spec-1.0-alpha-2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-timer\3.19.0\camel-timer-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-jms-client\2.26.0\artemis-jms-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-core-client\2.26.0\artemis-core-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jgroups\jgroups\5.2.0.Final\jgroups-5.2.0.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-epoll\4.1.79.Final\netty-transport-native-epoll-4.1.79.Final-linux-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.79.Final\netty-transport-native-unix-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.79.Final\netty-transport-classes-epoll-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-kqueue\4.1.79.Final\netty-transport-native-kqueue-4.1.79.Final-osx-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-kqueue\4.1.79.Final\netty-transport-classes-kqueue-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-http\4.1.79.Final\netty-codec-http-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-buffer\4.1.79.Final\netty-buffer-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport\4.1.79.Final\netty-transport-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-resolver\4.1.79.Final\netty-resolver-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler\4.1.79.Final\netty-handler-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler-proxy\4.1.79.Final\netty-handler-proxy-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec\4.1.79.Final\netty-codec-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-socks\4.1.79.Final\netty-codec-socks-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-common\4.1.79.Final\netty-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-commons\2.26.0\artemis-commons-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\ASUS\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\ASUS\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ASUS\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-selector\2.26.0\artemis-selector-2.26.0.jar;C:\Users\ASUS\.m2\repository\jakarta\jms\jakarta.jms-api\2.0.3\jakarta.jms-api-2.0.3.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-api\2.19.0\log4j-api-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-core\2.19.0\log4j-core-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.19.0\log4j-slf4j-impl-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-jul\2.19.0\log4j-jul-2.19.0.jar;C:\Users\ASUS\.m2\repository\com\google\guava\guava\31.1-jre\guava-31.1-jre.jar;C:\Users\ASUS\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\ASUS\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\ASUS\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\ASUS\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\ASUS\.m2\repository\com\google\errorprone\error_prone_annotations\2.11.0\error_prone_annotations-2.11.0.jar;C:\Users\ASUS\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\ASUS\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.1.1\caffeine-3.1.1.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-console\3.19.0\camel-console-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util-json\3.19.0\camel-util-json-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jackson\3.19.0\camel-jackson-3.19.0.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.4\jackson-databind-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.4\jackson-annotations-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.4\jackson-core-2.13.4.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\ASUS\AppData\Local\Temp\surefire17908671262623946430\surefirebooter17563189841329444616.jar C:\Users\ASUS\AppData\Local\Temp\surefire17908671262623946430 2022-12-08T15-26-49_699-jvmRun1 surefire10287317489833903582tmp surefire_0754450903163240624tmp"/>
+    <property name="sun.java.command" value="C:\Users\ASUS\AppData\Local\Temp\surefire16041033883542371627\surefirebooter8323861080119750039.jar C:\Users\ASUS\AppData\Local\Temp\surefire16041033883542371627 2022-12-11T14-20-59_506-jvmRun1 surefire12663217485806112489tmp surefire_01192639182509665462tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight\target\test-classes;C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight\target\classes;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\ASUS\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\ASUS\.m2\repository\fr\pantheonsorbonne\miage\poo-player\1.0.0-SNAPSHOT\poo-player-1.0.0-SNAPSHOT.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core\3.19.0\camel-core-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-engine\3.19.0\camel-core-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base-engine\3.19.0\camel-base-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-reifier\3.19.0\camel-core-reifier-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-processor\3.19.0\camel-core-processor-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-languages\3.19.0\camel-core-languages-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-model\3.19.0\camel-core-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-bean\3.19.0\camel-bean-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-browse\3.19.0\camel-browse-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-cluster\3.19.0\camel-cluster-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-controlbus\3.19.0\camel-controlbus-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataformat\3.19.0\camel-dataformat-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataset\3.19.0\camel-dataset-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-direct\3.19.0\camel-direct-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-directvm\3.19.0\camel-directvm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-file\3.19.0\camel-file-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-health\3.19.0\camel-health-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-language\3.19.0\camel-language-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-log\3.19.0\camel-log-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-mock\3.19.0\camel-mock-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-ref\3.19.0\camel-ref-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-rest\3.19.0\camel-rest-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-tooling-model\3.19.0\camel-tooling-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-saga\3.19.0\camel-saga-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-scheduler\3.19.0\camel-scheduler-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-seda\3.19.0\camel-seda-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-stub\3.19.0\camel-stub-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-validator\3.19.0\camel-validator-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-vm\3.19.0\camel-vm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xpath\3.19.0\camel-xpath-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xslt\3.19.0\camel-xslt-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxb\3.19.0\camel-xml-jaxb-3.19.0.jar;C:\Users\ASUS\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.3\jakarta.xml.bind-api-2.3.3.jar;C:\Users\ASUS\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.2\jakarta.activation-api-1.2.2.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-impl\2.3.3\jaxb-impl-2.3.3.jar;C:\Users\ASUS\.m2\repository\com\sun\activation\jakarta.activation\1.2.2\jakarta.activation-1.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxp\3.19.0\camel-xml-jaxp-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-io-util\3.19.0\camel-xml-io-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-main\3.19.0\camel-main-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-api\3.19.0\camel-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base\3.19.0\camel-base-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-management-api\3.19.0\camel-management-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-support\3.19.0\camel-support-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util\3.19.0\camel-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jms\3.19.0\camel-jms-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-spring\3.19.0\camel-spring-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-core\5.3.23\spring-core-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jcl\5.3.23\spring-jcl-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-aop\5.3.23\spring-aop-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-expression\5.3.23\spring-expression-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jms\5.3.23\spring-jms-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-messaging\5.3.23\spring-messaging-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-context\5.3.23\spring-context-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-tx\5.3.23\spring-tx-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-beans\5.3.23\spring-beans-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\apache\geronimo\specs\geronimo-jms_2.0_spec\1.0-alpha-2\geronimo-jms_2.0_spec-1.0-alpha-2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-timer\3.19.0\camel-timer-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-jms-client\2.26.0\artemis-jms-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-core-client\2.26.0\artemis-core-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jgroups\jgroups\5.2.0.Final\jgroups-5.2.0.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-epoll\4.1.79.Final\netty-transport-native-epoll-4.1.79.Final-linux-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.79.Final\netty-transport-native-unix-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.79.Final\netty-transport-classes-epoll-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-kqueue\4.1.79.Final\netty-transport-native-kqueue-4.1.79.Final-osx-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-kqueue\4.1.79.Final\netty-transport-classes-kqueue-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-http\4.1.79.Final\netty-codec-http-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-buffer\4.1.79.Final\netty-buffer-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport\4.1.79.Final\netty-transport-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-resolver\4.1.79.Final\netty-resolver-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler\4.1.79.Final\netty-handler-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler-proxy\4.1.79.Final\netty-handler-proxy-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec\4.1.79.Final\netty-codec-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-socks\4.1.79.Final\netty-codec-socks-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-common\4.1.79.Final\netty-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-commons\2.26.0\artemis-commons-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\ASUS\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\ASUS\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ASUS\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-selector\2.26.0\artemis-selector-2.26.0.jar;C:\Users\ASUS\.m2\repository\jakarta\jms\jakarta.jms-api\2.0.3\jakarta.jms-api-2.0.3.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-api\2.19.0\log4j-api-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-core\2.19.0\log4j-core-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.19.0\log4j-slf4j-impl-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-jul\2.19.0\log4j-jul-2.19.0.jar;C:\Users\ASUS\.m2\repository\com\google\guava\guava\31.1-jre\guava-31.1-jre.jar;C:\Users\ASUS\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\ASUS\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\ASUS\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\ASUS\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\ASUS\.m2\repository\com\google\errorprone\error_prone_annotations\2.11.0\error_prone_annotations-2.11.0.jar;C:\Users\ASUS\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\ASUS\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.1.1\caffeine-3.1.1.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-console\3.19.0\camel-console-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util-json\3.19.0\camel-util-json-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jackson\3.19.0\camel-jackson-3.19.0.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.4\jackson-databind-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.4\jackson-annotations-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.4\jackson-core-2.13.4.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight-2\target\test-classes;C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight-2\target\classes;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\ASUS\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\ASUS\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\ASUS\.m2\repository\fr\pantheonsorbonne\miage\poo-player\1.0.0-SNAPSHOT\poo-player-1.0.0-SNAPSHOT.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core\3.19.0\camel-core-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-engine\3.19.0\camel-core-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base-engine\3.19.0\camel-base-engine-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-reifier\3.19.0\camel-core-reifier-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-processor\3.19.0\camel-core-processor-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-languages\3.19.0\camel-core-languages-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-core-model\3.19.0\camel-core-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-bean\3.19.0\camel-bean-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-browse\3.19.0\camel-browse-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-cluster\3.19.0\camel-cluster-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-controlbus\3.19.0\camel-controlbus-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataformat\3.19.0\camel-dataformat-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-dataset\3.19.0\camel-dataset-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-direct\3.19.0\camel-direct-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-directvm\3.19.0\camel-directvm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-file\3.19.0\camel-file-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-health\3.19.0\camel-health-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-language\3.19.0\camel-language-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-log\3.19.0\camel-log-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-mock\3.19.0\camel-mock-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-ref\3.19.0\camel-ref-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-rest\3.19.0\camel-rest-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-tooling-model\3.19.0\camel-tooling-model-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-saga\3.19.0\camel-saga-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-scheduler\3.19.0\camel-scheduler-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-seda\3.19.0\camel-seda-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-stub\3.19.0\camel-stub-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-validator\3.19.0\camel-validator-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-vm\3.19.0\camel-vm-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xpath\3.19.0\camel-xpath-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xslt\3.19.0\camel-xslt-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxb\3.19.0\camel-xml-jaxb-3.19.0.jar;C:\Users\ASUS\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.3\jakarta.xml.bind-api-2.3.3.jar;C:\Users\ASUS\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.2\jakarta.activation-api-1.2.2.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-core\2.3.0\jaxb-core-2.3.0.jar;C:\Users\ASUS\.m2\repository\com\sun\xml\bind\jaxb-impl\2.3.3\jaxb-impl-2.3.3.jar;C:\Users\ASUS\.m2\repository\com\sun\activation\jakarta.activation\1.2.2\jakarta.activation-1.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-jaxp\3.19.0\camel-xml-jaxp-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-xml-io-util\3.19.0\camel-xml-io-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-main\3.19.0\camel-main-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-api\3.19.0\camel-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-base\3.19.0\camel-base-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-management-api\3.19.0\camel-management-api-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-support\3.19.0\camel-support-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util\3.19.0\camel-util-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jms\3.19.0\camel-jms-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-spring\3.19.0\camel-spring-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-core\5.3.23\spring-core-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jcl\5.3.23\spring-jcl-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-aop\5.3.23\spring-aop-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-expression\5.3.23\spring-expression-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-jms\5.3.23\spring-jms-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-messaging\5.3.23\spring-messaging-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-context\5.3.23\spring-context-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-tx\5.3.23\spring-tx-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\springframework\spring-beans\5.3.23\spring-beans-5.3.23.jar;C:\Users\ASUS\.m2\repository\org\apache\geronimo\specs\geronimo-jms_2.0_spec\1.0-alpha-2\geronimo-jms_2.0_spec-1.0-alpha-2.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-timer\3.19.0\camel-timer-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-jms-client\2.26.0\artemis-jms-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-core-client\2.26.0\artemis-core-client-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jgroups\jgroups\5.2.0.Final\jgroups-5.2.0.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-epoll\4.1.79.Final\netty-transport-native-epoll-4.1.79.Final-linux-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.79.Final\netty-transport-native-unix-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.79.Final\netty-transport-classes-epoll-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-native-kqueue\4.1.79.Final\netty-transport-native-kqueue-4.1.79.Final-osx-x86_64.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport-classes-kqueue\4.1.79.Final\netty-transport-classes-kqueue-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-http\4.1.79.Final\netty-codec-http-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-buffer\4.1.79.Final\netty-buffer-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-transport\4.1.79.Final\netty-transport-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-resolver\4.1.79.Final\netty-resolver-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler\4.1.79.Final\netty-handler-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-handler-proxy\4.1.79.Final\netty-handler-proxy-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec\4.1.79.Final\netty-codec-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-codec-socks\4.1.79.Final\netty-codec-socks-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\io\netty\netty-common\4.1.79.Final\netty-common-4.1.79.Final.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-commons\2.26.0\artemis-commons-2.26.0.jar;C:\Users\ASUS\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\ASUS\.m2\repository\commons-beanutils\commons-beanutils\1.9.4\commons-beanutils-1.9.4.jar;C:\Users\ASUS\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ASUS\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ASUS\.m2\repository\org\apache\activemq\artemis-selector\2.26.0\artemis-selector-2.26.0.jar;C:\Users\ASUS\.m2\repository\jakarta\jms\jakarta.jms-api\2.0.3\jakarta.jms-api-2.0.3.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-api\2.19.0\log4j-api-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-core\2.19.0\log4j-core-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.19.0\log4j-slf4j-impl-2.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\logging\log4j\log4j-jul\2.19.0\log4j-jul-2.19.0.jar;C:\Users\ASUS\.m2\repository\com\google\guava\guava\31.1-jre\guava-31.1-jre.jar;C:\Users\ASUS\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\ASUS\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\ASUS\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\ASUS\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\ASUS\.m2\repository\com\google\errorprone\error_prone_annotations\2.11.0\error_prone_annotations-2.11.0.jar;C:\Users\ASUS\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;C:\Users\ASUS\.m2\repository\com\github\ben-manes\caffeine\caffeine\3.1.1\caffeine-3.1.1.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-console\3.19.0\camel-console-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-util-json\3.19.0\camel-util-json-3.19.0.jar;C:\Users\ASUS\.m2\repository\org\apache\camel\camel-jackson\3.19.0\camel-jackson-3.19.0.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.4\jackson-databind-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.4\jackson-annotations-2.13.4.jar;C:\Users\ASUS\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.4\jackson-core-2.13.4.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\ASUS"/>
     <property name="user.language" value="fr"/>
@@ -25,12 +25,12 @@
     <property name="java.version.date" value="2022-01-18"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-17.0.2"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight"/>
+    <property name="basedir" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight-2"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\ASUS\AppData\Local\Temp\surefire17908671262623946430\surefirebooter17563189841329444616.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ASUS\AppData\Local\Temp\surefire16041033883542371627\surefirebooter8323861080119750039.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.2+8-LTS-86"/>
@@ -44,7 +44,7 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\ASUS\AppData\Local\Temp\"/>
     <property name="java.version" value="17.0.2"/>
-    <property name="user.dir" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight"/>
+    <property name="user.dir" value="C:\Users\ASUS\Desktop\L3 MIAGE\POO\CrazyEight-2"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
@@ -56,68 +56,226 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="itShouldPlayThreeFive" classname="game.LocalCrazyEightTest" time="0.12">
-    <system-out><![CDATA[FIVE OF DIAMONDS
+  <testcase name="itShouldPlayThreeFive" classname="game.LocalCrazyEightTest" time="0.048">
+    <system-out><![CDATA[Naki plays 3 cards...
+FIVE OF DIAMONDS
 FIVE OF HEART
 ]]></system-out>
   </testcase>
-  <testcase name="jackMakePreviousPlayerPlay" classname="game.LocalCrazyEightTest" time="0.01">
-    <system-out><![CDATA[FIVE OF CLUBS
+  <testcase name="jackMakePreviousPlayerPlay" classname="game.LocalCrazyEightTest" time="0.003">
+    <system-out><![CDATA[Naki plays 1 card...
+FIVE OF CLUBS
+PL plays 1 card...
 JACK OF CLUBS
 ]]></system-out>
   </testcase>
-  <testcase name="eightDeterminTheOptimalColor" classname="game.LocalCrazyEightTest" time="0.005"/>
-  <testcase name="nextPlayerDontPlayAfterPlayingSeven" classname="game.LocalCrazyEightTest" time="0.002">
-    <system-out><![CDATA[SEVEN OF CLUBS
+  <testcase name="eightDeterminTheOptimalColor" classname="game.LocalCrazyEightTest" time="0.003"/>
+  <testcase name="finalWinnerHasNoCard" classname="game.LocalCrazyEightTest" time="0.035">
+    <system-out><![CDATA[---------------------
+The last card played: KING OF CLUBS
+Next player: Naki
+Naki plays 2 cards...
+KING OF DIAMONDS
+KING OF SPADES
+---------------------
+The last card played: KING OF SPADES
+Next player: PL
+PL plays 1 card...
+JACK OF SPADES
+---------------------
+The last card played: JACK OF SPADES
+Next player: Naki
+Naki plays 2 cards...
+JACK OF DIAMONDS
+JACK OF CLUBS
+---------------------
+The last card played: JACK OF CLUBS
+Next player: Ken
+Ken plays 2 cards...
+FIVE OF CLUBS
+FIVE OF SPADES
+---------------------
+The last card played: FIVE OF SPADES
+Next player: Malik
+Malik plays 1 card...
+SIX OF SPADES
+---------------------
+The last card played: SIX OF SPADES
+Next player: PL
+PL plays 1 card...
+EIGHT OF SPADES
+---------------------
+The last card played: EIGHT OF SPADES
+Next player: Naki
+Naki plays 1 card...
+FIVE OF HEARTS
+---------------------
+The last card played: FIVE OF HEARTS
+Next player: Ken
+Ken plays 1 card...
+EIGHT OF DIAMONDS
+---------------------
+The last card played: EIGHT OF DIAMONDS
+Next player: Malik
+Malik plays 1 card...
+ACE OF DIAMONDS
+---------------------
+The last card played: ACE OF DIAMONDS
+Next player: PL
+PL takes 2 card ...
+---------------------
+The last card played: ACE OF DIAMONDS
+Next player: Naki
+Naki takes 1 card ...
+---------------------
+The last card played: ACE OF DIAMONDS
+Next player: Ken
+Ken plays 1 card...
+TWO OF DIAMONDS
+---------------------
+The last card played: TWO OF DIAMONDS
+Next player: Malik
+Malik plays 1 card...
+TWO OF HEARTS
+---------------------
+The last card played: TWO OF HEARTS
+Next player: PL
+PL plays 1 card...
+SEVEN OF HEARTS
+---------------------
+The last card played: SEVEN OF HEARTS
+Next player: Naki
+---------------------
+The last card played: SEVEN OF HEARTS
+Next player: Ken
+Ken plays 1 card...
+EIGHT OF CLUBS
+---------------------
+The last card played: EIGHT OF CLUBS
+Next player: Malik
+Malik plays 1 card...
+NINE OF DIAMONDS
+---------------------
+The last card played: NINE OF DIAMONDS
+Next player: PL
+PL plays 1 card...
+SIX OF DIAMONDS
+---------------------
+The last card played: SIX OF DIAMONDS
+Next player: Naki
+Naki takes 1 card ...
+---------------------
+The last card played: SIX OF DIAMONDS
+Next player: Ken
+Ken plays 1 card...
+SIX OF CLUBS
+---------------------
+The last card played: SIX OF CLUBS
+Next player: Malik
+Malik plays 1 card...
+EIGHT OF HEARTS
+---------------------
+The last card played: EIGHT OF HEARTS
+Next player: PL
+PL plays 1 card...
+QUEEN OF HEARTS
+---------------------
+The last card played: QUEEN OF HEARTS
+Next player: Naki
+Naki plays 1 card...
+QUEEN OF SPADES
+---------------------
+The last card played: QUEEN OF SPADES
+Next player: Ken
+Ken plays 1 card...
+QUEEN OF DIAMONDS
+---------------------
+The last card played: QUEEN OF DIAMONDS
+Next player: Malik
+Malik takes 1 card ...
+---------------------
+The last card played: QUEEN OF DIAMONDS
+Next player: PL
+PL plays 1 card...
+QUEEN OF CLUBS
+---------------------
+The last card played: QUEEN OF CLUBS
+Next player: Naki
+Naki plays 2 cards...
+FOUR OF CLUBS
+FOUR OF DIAMONDS
+---------------------
+The last card played: FOUR OF DIAMONDS
+Next player: Ken
+Ken plays 1 card...
+THREE OF DIAMONDS
+THE WINNER IS Ken
 ]]></system-out>
   </testcase>
-  <testcase name="itShouldPlayOnlyOneCard" classname="game.LocalCrazyEightTest" time="0.004">
-    <system-out><![CDATA[FIVE OF SPADES
+  <testcase name="nextPlayerDontPlayAfterPlayingSeven" classname="game.LocalCrazyEightTest" time="0.004">
+    <system-out><![CDATA[Naki plays 1 card...
+SEVEN OF CLUBS
 ]]></system-out>
   </testcase>
-  <testcase name="takeCardAddTheAmountOfCards" classname="game.LocalCrazyEightTest" time="0.002"/>
+  <testcase name="itShouldPlayOnlyOneCard" classname="game.LocalCrazyEightTest" time="0.003">
+    <system-out><![CDATA[Naki plays 1 card...
+FIVE OF SPADES
+]]></system-out>
+  </testcase>
+  <testcase name="takeCardAddTheAmountOfCards" classname="game.LocalCrazyEightTest" time="0.002">
+    <system-out><![CDATA[Naki takes 5 card ...
+]]></system-out>
+  </testcase>
   <testcase name="twoAcesMakeTheNextPlayerDrawFourCards" classname="game.LocalCrazyEightTest" time="0.001">
-    <system-out><![CDATA[ACE OF HEART
+    <system-out><![CDATA[Naki plays 2 cards...
+ACE OF HEART
 ACE OF CLUBS
+PL takes 4 card ...
 ]]></system-out>
   </testcase>
   <testcase name="itShouldPlayFourFive" classname="game.LocalCrazyEightTest" time="0.002">
-    <system-out><![CDATA[FIVE OF DIAMONDS
+    <system-out><![CDATA[Naki plays 4 cards...
+Naki plays 3 cards...
+FIVE OF DIAMONDS
 FIVE OF SPADES
-FIVE OF CLUBS
 FIVE OF HEART
 ]]></system-out>
   </testcase>
-  <testcase name="eightScenarioWithOneCardForEachColor" classname="game.LocalCrazyEightTest" time="0.002"/>
-  <testcase name="aceCanCounterAnOtherAce" classname="game.LocalCrazyEightTest" time="0.01">
-    <system-out><![CDATA[Next player: Naki
-ACE OF HEART | ACE OF CLUBS | FIVE OF CLUBS | 
+  <testcase name="eightScenarioWithOneCardForEachColor" classname="game.LocalCrazyEightTest" time="0.003"/>
+  <testcase name="aceCanCounterAnOtherAce" classname="game.LocalCrazyEightTest" time="0.002">
+    <system-out><![CDATA[Naki plays 2 cards...
 ACE OF HEART
 ACE OF CLUBS
-Number of Naki's remaining cards: 1
+PL plays 2 cards...
 ACE OF DIAMONDS
 ACE OF SPADES
 ]]></system-out>
   </testcase>
-  <testcase name="cardsDistributionAddSevenCardsForEachPlayers" classname="game.LocalCrazyEightTest" time="0.004"/>
   <testcase name="itShouldPlayFiveDiamondsAndFiveSpades" classname="game.LocalCrazyEightTest" time="0.002">
-    <system-out><![CDATA[FIVE OF DIAMONDS
+    <system-out><![CDATA[Naki plays 2 cards...
+FIVE OF DIAMONDS
 FIVE OF SPADES
 ]]></system-out>
   </testcase>
-  <testcase name="gameContainsTheTrueAmountOfPlayers" classname="game.LocalCrazyEightTest" time="0.005"/>
-  <testcase name="itShouldPlayTheTwoHeart" classname="game.LocalCrazyEightTest" time="0.001">
-    <system-out><![CDATA[TWO OF HEART
+  <testcase name="gameContainsTheTrueAmountOfPlayers" classname="game.LocalCrazyEightTest" time="0.001"/>
+  <testcase name="cardsDistributionAddEightCardsForEachPlayers" classname="game.LocalCrazyEightTest" time="0.008"/>
+  <testcase name="itShouldPlayTheTwoHeart" classname="game.LocalCrazyEightTest" time="0.005">
+    <system-out><![CDATA[Naki plays 1 card...
+TWO OF HEART
 ]]></system-out>
   </testcase>
-  <testcase name="gameReshufflerResetAllCardsPlayed" classname="game.LocalCrazyEightTest" time="0.001"/>
-  <testcase name="tenMakeThePlayerPlayTwoTime" classname="game.LocalCrazyEightTest" time="0.006">
-    <system-out><![CDATA[TEN OF CLUBS
+  <testcase name="gameReshufflerResetAllCardsPlayed" classname="game.LocalCrazyEightTest" time="0.006"/>
+  <testcase name="tenMakeThePlayerPlayTwoTime" classname="game.LocalCrazyEightTest" time="0.019">
+    <system-out><![CDATA[Naki plays 1 card...
+TEN OF CLUBS
+Naki plays 1 card...
 FIVE OF CLUBS
 ]]></system-out>
   </testcase>
-  <testcase name="eightChooseTheBestColorAndMakeTheNextPlayerDrawingACard" classname="game.LocalCrazyEightTest" time="0.001">
-    <system-out><![CDATA[EIGHT OF HEARTS
+  <testcase name="eightChooseTheBestColorAndMakeTheNextPlayerDrawingACard" classname="game.LocalCrazyEightTest" time="0.005">
+    <system-out><![CDATA[Naki plays 1 card...
+EIGHT OF HEARTS
+PL takes 1 card ...
 ]]></system-out>
   </testcase>
 </testsuite>

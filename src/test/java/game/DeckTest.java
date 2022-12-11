@@ -22,26 +22,25 @@ public class DeckTest {
     @Test
     void isHeartSevenExist(){
         Card HeartSeven = new Card("SEVEN", "HEARTS");
-        assertTrue(newDeck.cardDeck.contains(HeartSeven));
+        assertTrue(newDeck.getDeck().contains(HeartSeven));
     }
 
     @Test
     void cardsAreUnique(){
-        Set<Card> deckSet =new HashSet<Card>(newDeck.cardDeck);
+        Set<Card> deckSet =new HashSet<Card>(newDeck.getDeck());
 
-        assertEquals(deckSet.size(), newDeck.cardDeck.size());
+        assertEquals(deckSet.size(), newDeck.getDeck().size());
     }
 
     @Test
     void deckHas52Cards(){
-        assertEquals(52, newDeck.cardDeck.size());
+        assertEquals(52, newDeck.getDeck().size());
     }
 
     @Test
     void getTopCardAddOneCard(){
-        newDeck.cardDeck = newDeck.deckCreation();
         LinkedList<Card> hand = new LinkedList<Card>();
-        hand.add(newDeck.getTopCard());
+        hand.add(newDeck.getDeckTopCard());
         
         assertEquals(1, hand.size());
     } 
@@ -50,10 +49,10 @@ public class DeckTest {
     void deckShouldLoseTwoCardsAfterPickingTwoCards(){
         
         LinkedList<Card> hand = new LinkedList<Card>();
-        hand.add(newDeck.getTopCard());
-        hand.add(newDeck.getTopCard());
+        hand.add(newDeck.getDeckTopCard());
+        hand.add(newDeck.getDeckTopCard());
 
-        assertEquals(50, newDeck.cardDeck.size());
+        assertEquals(50, newDeck.getDeck().size());
 
     }
 

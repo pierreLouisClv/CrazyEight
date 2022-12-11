@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 public class CardTest {
     @Test
     void sevenOfHeartsShouldEqualSevenOfHearts() {
-        Card HeartSeven = new Card("HEART", "SEVEN");
-        assertTrue(HeartSeven.equals(new Card("HEART", "SEVEN")));
+        Card HeartSeven = new Card("HEARTS", "SEVEN");
+        assertEquals(HeartSeven, new Card("HEARTS", "SEVEN"));
     }
 
     @Test
     void aceOfDiamondsShouldBeDiamonds() {
         Card aceOfDiamonds = new Card("ACE", "DIAMONDS");
-        assertTrue(aceOfDiamonds.getColor()=="DIAMONDS");
+        assertEquals("DIAMONDS", aceOfDiamonds.getColor());
     }
 
     @Test

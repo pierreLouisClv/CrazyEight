@@ -2,51 +2,61 @@ package game;
 
 public class Card {
     private static final String EIGHT = "EIGHT";
-    private static final String [] VALUES = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", EIGHT, "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
-    private static final String [] COLORS = {"HEARTS", "DIAMONDS", "CLUBS", "SPADES"}; // les 4 couleurs constantes
-    
-    private String value; //value of the card
-    private String color; //color of the card
-    
-    protected Card(String value, String color){ //constructeur qui récupère les informations données par les paramètres
-        this.value = value; 
+    private static final String[] VALUES = { "ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", EIGHT, "SEVEN", "SIX",
+            "FIVE", "FOUR", "THREE", "TWO" }; 
+    private static final String[] COLORS = { "HEARTS", "DIAMONDS", "CLUBS", "SPADES" }; 
+
+    private String value;
+    private String color; 
+
+    protected Card(String value, String color) { // constructeur qui récupère les informations données par les
+                                                 // paramètres
+        this.value = value;
         this.color = color;
     }
 
-    public static void cardPrinter(Card card){
-        System.out.println(card.getValue() +" OF "+ card.getColor());
+    public static void cardPrinter(Card card) {
+        System.out.println(card.getValue() + " OF " + card.getColor());
     }
 
-    protected String getValue(){
+    protected String getValue() {
         return this.value;
     }
 
-    protected String getColor(){
+    protected String getColor() {
         return this.color;
     }
 
     @Override
-    public boolean equals(Object card){
-        return this.haveSameColor((Card)card) && this.haveSameValue((Card)card);
+    public boolean equals(Object card) {
+        if(card instanceof Card){
+            return this.haveSameColor((Card) card) && this.haveSameValue((Card) card);
+        }
+        return false;
     }
 
-    protected boolean haveSameColor(Card card){
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    protected boolean haveSameColor(Card card) {
         return this.getColor().equals(card.getColor());
     }
 
-    protected boolean haveSameValue(Card card){
+    protected boolean haveSameValue(Card card) {
         return this.getValue().equals(card.getValue());
     }
 
-    protected static String[] getAllCardsValues(){
+    protected static String[] getAllCardsValues() {
         return VALUES;
     }
 
-    protected static String[] getAllCardsColors(){
+    protected static String[] getAllCardsColors() {
         return COLORS;
     }
 
-    protected static String getMostPowerfullValue(){
+    protected static String getMostPowerfullValue() {
         return EIGHT;
     }
 }
