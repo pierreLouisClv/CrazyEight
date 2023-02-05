@@ -2,11 +2,12 @@ package game;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public abstract class CrazyEightEngine {
     private static final int NUMBER_OF_CARDS_FOR_EACH_PLAYERS = 8;
-
+    //you could have made the code easier by using a java collection class
     private Player[] initialPlayers = new Player[getNbOfPlayers()];
     private Deck gameDeck;
     private Deque<Card> allCardsPlayed = new LinkedList<>();
@@ -26,7 +27,7 @@ public abstract class CrazyEightEngine {
         while (true) {
 
             Player playerTurn = getPlayerTurn();
-            
+
             System.out.println("---------------------");
             System.out.print("The last card played: ");
             Card.cardPrinter(lastCardPlayed);
@@ -51,10 +52,8 @@ public abstract class CrazyEightEngine {
 
         /* si la carte jouée juste avant est un AS ou un HUIT */
         else if (isTheLastCardPlayedPowerfull(this.lastCardPlayed)) {
-        }
-
-        else {
-            LinkedList<Card> playableCards = playerTurn.getPlayableCards(this.lastCardPlayed);
+        } else {
+            List<Card> playableCards = playerTurn.getPlayableCards(this.lastCardPlayed);
             if (playableCards.isEmpty()) {
                 takeCard(1);
             } else {
@@ -70,11 +69,13 @@ public abstract class CrazyEightEngine {
         }
     }
 
+    //a function returning a boolean should not modify the object attributes.
+    //this one does a lot of things and is very complex for obscure reasons
     protected boolean isTheLastCardPlayedPowerfull(Card lastCardPlayed) {
         Player playerTurn = this.getPlayerTurn();
-
+//should have used enum to each equals procedures
         if (lastCardPlayed.getValue().equals("ACE") && this.nbOfAcePlayed > 0) {
-            LinkedList<Card> allAceOfThePlayer = new LinkedList<>();
+            List<Card> allAceOfThePlayer = new LinkedList<>();
             for (Card card : playerTurn.getHandPlayer()) {
                 if (card.getValue().equals("ACE")) {
                     allAceOfThePlayer.add(card);
@@ -91,13 +92,11 @@ public abstract class CrazyEightEngine {
             /* renvoie true pour signaler que le joueur a du s'adapter à la carte précédente */
             return true;
 
-        }
-
-        else if (lastCardPlayed.getValue().equals(Card.getMostPowerfullValue())) {
+        } else if (lastCardPlayed.getValue().equals(Card.getMostPowerfullValue())) {
             /* créer une carte qui possède la couleur choisie par le joueur qui a posé le HUIT */
             Card virtualNewEight = new Card(Card.getMostPowerfullValue(), this.choosenColor);
             /* cela impact les cartes jouables du joueur en cours */
-            LinkedList<Card> playableCard = playerTurn.getPlayableCards(virtualNewEight);
+            List<Card> playableCard = playerTurn.getPlayableCards(virtualNewEight);
             if (playableCard.isEmpty()) {
                 takeCard(1);
             } else {
@@ -128,11 +127,11 @@ public abstract class CrazyEightEngine {
                 this.reverse();
                 break;
 
-            case "SEVEN": 
+            case "SEVEN":
                 this.nbOfTurnToPass += 1;
                 break;
 
-            default:
+            default://why?
                 break;
         }
     }
@@ -144,6 +143,7 @@ public abstract class CrazyEightEngine {
 
         for (int i = 0; i < nbOfCardsPlayerMustToTake; i++) {
             /* renouvèle le deck si le Deck n'a plus de carte */
+            //use .size instead
             if ((card = gameDeck.getDeckTopCard()) == null) {
                 deckReshuffler();
             } else {
@@ -152,11 +152,12 @@ public abstract class CrazyEightEngine {
         }
     }
 
-    protected void playSeveralCardsOrOnlyOneCard(LinkedList<Card> playableCards) {
+    protected void playSeveralCardsOrOnlyOneCard(List<Card> playableCards) {
         Player playerTurn = this.getPlayerTurn();
 
         int size = playableCards.size();
         /* définit une carte par défaut */
+        //again a queue would have been preferred
         Card cardPlayed = playableCards.get(0);
         int combination = playerTurn.nbOfCombinationOfTheCard(cardPlayed);
         if (size > 1) {
@@ -180,9 +181,10 @@ public abstract class CrazyEightEngine {
 
     }
 
-    protected void playTwoCards(Player playerTurn, Card cardPlayed, LinkedList<Card> playableCards) {
+    protected void playTwoCards(Player playerTurn, Card cardPlayed, List<Card> playableCards) {
 
         oneCardIsPlayed(cardPlayed);
+        //playableCards should have been a queue if you are just using the tip
         Card theSecondCardToPlay = playableCards.get(0);
         for (Card card : playerTurn.getHandPlayer()) {
             if (card.haveSameValue(cardPlayed) && !(card.haveSameColor(cardPlayed))) {
@@ -195,11 +197,11 @@ public abstract class CrazyEightEngine {
 
     protected void playThreeOrFourCards(Player playerTurn, Card cardPlayed, int combination) {
         Card finalCardToPlay = playerTurn.cardPlayedAtTheEndOfTheCombination(cardPlayed, combination);
-        LinkedList<Card> otherCardsPlayed = new LinkedList<>();
+        List<Card> otherCardsPlayed = new LinkedList<>();
         for (Card card : playerTurn.getHandPlayer()) {
             if (card.haveSameValue(finalCardToPlay) && !(card.haveSameColor(finalCardToPlay))) {
                 otherCardsPlayed.add(card); // secondCard = card
-                if (combination == 3) {
+                if (combination == 3) { //you should have used a constant here
                     System.out.println(playerTurn.getName() + " plays 3 cards...");
                     break;
                 } else {
@@ -224,14 +226,14 @@ public abstract class CrazyEightEngine {
         getCardPower(cardPlayed);
         this.lastCardPlayed = this.allCardsPlayed.getLast();
     }
-    
+
     protected void gameInitialisation() {
         gameDeck = new Deck();
         allCardsPlayed.add(gameDeck.getDeckTopCard());
         lastCardPlayed = allCardsPlayed.getLast();
 
         choosenColor = allCardsPlayed.getLast().getColor();
-        turn = random.nextInt(getNbOfPlayers()-1);
+        turn = random.nextInt(getNbOfPlayers() - 1);
         index = 1;
         nbOfAcePlayed = 0;
         nbOfTurnToPass = 0;
@@ -262,8 +264,8 @@ public abstract class CrazyEightEngine {
             return turn % nbOfPlayers;
         } else {
             return turn % nbOfPlayers + nbOfPlayers;
-        }    
-        
+        }
+
     }
 
     protected Player getPlayerTurn() {
@@ -274,8 +276,9 @@ public abstract class CrazyEightEngine {
         return this.gameDeck;
     }
 
+    //this index is mysterious to me, i don't get why it has negative values
     protected void reverse() {
-        this.index = this.index * (-1);
+        this.index = - this.index;
     }
 
     protected void nextPlayer() {

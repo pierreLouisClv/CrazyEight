@@ -1,13 +1,14 @@
 package game;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.LinkedList;
 
 /* cette classe représente un joueur */
 public class Player {
     private String name;
-    private LinkedList<Card> handPlayer = new LinkedList<>();
+    private List<Card> handPlayer = new LinkedList<>();
 
     protected Player(String name) {
         this.name = name;
@@ -23,8 +24,8 @@ public class Player {
      * @return la liste des cartes jouables. Renvoie une liste vide si le joueur ne
      *         peut pas jouer
      */
-    protected LinkedList<Card> getPlayableCards(Card lastCardPlayed) {
-        LinkedList<Card> playableCards = new LinkedList<>();
+    protected List<Card> getPlayableCards(Card lastCardPlayed) {
+        List<Card> playableCards = new LinkedList<>();
 
         for (Card card : handPlayer) {
             if (card.haveSameColor(lastCardPlayed) ||
@@ -48,7 +49,7 @@ public class Player {
      * @param lastCardPlayed la carte jouée par le joueur précédent
      * @return la carte qui sera jouée par le joueur
      */
-    protected Card makeTheBestChoice(LinkedList<Card> playableCards, Card lastCardPlayed) {
+    protected Card makeTheBestChoice(List<Card> playableCards, Card lastCardPlayed) {
         int highestCombination = 1;
         int combination;
         /* carte par défaut */
@@ -88,7 +89,7 @@ public class Player {
      */
     protected Card cardPlayedAtTheEndOfTheCombination(Card bestChoice, int combination) {
         /* HashMap stockant pour chaque carte le nombre de carte qui possède la meme couleur que celle-ci*/
-        HashMap<Card, Integer> nbOfEachColorsInHandPlayer = new HashMap<>(combination - 1);
+        Map<Card, Integer> nbOfEachColorsInHandPlayer = new HashMap<>(combination - 1);
         for (Card card : handPlayer) {
             /* parcours des cartes combinables avec bestChoice (la première carte jouée) */
             if ((card.haveSameValue(bestChoice)) && !(card.haveSameColor(bestChoice))) {
@@ -118,10 +119,11 @@ public class Player {
         /* HashMap stockant pour chaque couleur son nombre de carte associé*/
         Map<String, Integer> nbOfEachColorsInHandPlayer = new HashMap<>();
 
-        for (int i = 0; i < handPlayer.size(); i++) {
+        //you should have used a foreach here
+        for (Card card: handPlayer) {
             /* parcours la main du joueur sans inclure les HUIT */
-            if (!handPlayer.get(i).getValue().equals(Card.getMostPowerfullValue())) {
-                String currentColor = handPlayer.get(i).getColor();
+            if (!card.getValue().equals(Card.getMostPowerfullValue())) {
+                String currentColor = card.getColor();
                 /* Si on a déjà parcouru une carte de la couleur currentColor */
                 if (nbOfEachColorsInHandPlayer.containsKey(currentColor)) {
                     /* la valeur associée à cette couleur est incrémentée de 1 */
@@ -170,7 +172,7 @@ public class Player {
      * valeur qu'une carte donnée
      * dans la main du joueur. Cette carte est inclue dans la valeur de retour.
      * 
-     * @param handCare la carte qui sera comparée avec les autres cartes de la main
+     * @param handCard la carte qui sera comparée avec les autres cartes de la main
      *                 du joueur
      * @return le nombre de carte combinable, 1 par défaut.
      */
@@ -194,7 +196,7 @@ public class Player {
      * @param playableCards l'ensemble des cartes jouées. Ne peut pas être vide.
      * @return une carte
      */
-    private Card chooseRandomCardFromHandPlayerWhichIsNotEight(LinkedList<Card> playableCards) {
+    private Card chooseRandomCardFromHandPlayerWhichIsNotEight(List<Card> playableCards) {
         int i = 0;
         int size = playableCards.size();
         while (playableCards.get(i).getValue().equals(Card.getMostPowerfullValue()) && i < size) {
@@ -222,7 +224,7 @@ public class Player {
      * @return la première carte qui doit être jouée, par défaut bestChoice
      */
     private Card chooseBestCardWhenPlayerPlaySeveralCardsWhichHaveSameValueOfLastCardPlayed(
-            LinkedList<Card> playableCards, Card lastCardPlayed, Card bestChoice) {
+            List<Card> playableCards, Card lastCardPlayed, Card bestChoice) {
         Card firstCardToPlay = bestChoice;
         /*définit dans un premier temps la carte joué à la fin */
         Card finalCard = cardPlayedAtTheEndOfTheCombination(lastCardPlayed, nbOfCombinationOfTheCard(bestChoice));
@@ -248,7 +250,7 @@ public class Player {
         return this.handPlayer.isEmpty();
     }
 
-    protected LinkedList<Card> getHandPlayer() {
+    protected List<Card> getHandPlayer() {
         return this.handPlayer;
     }
 

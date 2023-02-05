@@ -17,12 +17,13 @@ public class LocalCrazyEight extends CrazyEightEngine{
     
     
     private void playersInitialisation(){
+        //this would have been simpler if player were stored in a java.collection
         for(int i=0; i<getNbOfPlayers(); i++){
             Player p = new Player(PLAYERS_NAMES[i]);
             getInitialPlayers()[i] = p;
         }
     }
-    
+    //never used?
     protected static String[] getPlayersNames(){
         return PLAYERS_NAMES;
     }
